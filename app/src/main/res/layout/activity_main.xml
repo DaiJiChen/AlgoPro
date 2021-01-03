@@ -13,29 +13,10 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="vertical"
+        android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="50dp"
-                android:src="@drawable/sharp_text_down" />
-
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="50dp"
-                android:src="@drawable/sharp_text_up" />
-
-
-        </LinearLayout>
-
 
         <TextView
             android:id="@+id/title"
@@ -43,13 +24,14 @@
             android:layout_height="wrap_content"
             android:text="Algorithms"
             android:textColor="@color/text_grid"
-            android:textSize="30sp" />
+            android:textSize="35sp" />
 
         <TextView
             android:id="@+id/smallTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Explanation, Animation and CodeDemo"
+            android:textSize="16sp"
             android:textColor="@color/text_grid" />
 
     </LinearLayout>
@@ -81,7 +63,8 @@
             android:background="@color/card_grid"
             android:backgroundTint="@color/card_grid"
             app:layout_columnWeight="1"
-            app:layout_rowWeight="1"/>
+            app:layout_rowWeight="1"
+            android:onClick="cardOnClick"/>
 
         <TextView
             android:id="@+id/button1"
@@ -97,7 +80,8 @@
             android:background="@color/card_yellow"
             android:backgroundTint="@color/card_yellow"
             app:layout_columnWeight="1"
-            app:layout_rowWeight="1"/>
+            app:layout_rowWeight="1"
+            android:onClick="cardOnClick"/>
 
         <TextView
             android:id="@+id/button2"
@@ -113,7 +97,8 @@
             android:background="@color/card_light_blue"
             android:backgroundTint="@color/card_light_blue"
             app:layout_columnWeight="1"
-            app:layout_rowWeight="1"/>
+            app:layout_rowWeight="1"
+            android:onClick="cardOnClick"/>
 
         <TextView
             android:id="@+id/button3"
@@ -129,7 +114,8 @@
             android:background="@color/card_grid"
             android:backgroundTint="@color/card_grid"
             app:layout_columnWeight="1"
-            app:layout_rowWeight="1"/>
+            app:layout_rowWeight="1"
+            android:onClick="cardOnClick"/>
 
         <TextView
             android:id="@+id/button4"
@@ -145,7 +131,8 @@
             android:background="@color/card_yellow"
             android:backgroundTint="@color/card_yellow"
             app:layout_columnWeight="1"
-            app:layout_rowWeight="1"/>
+            app:layout_rowWeight="1"
+            android:onClick="cardOnClick"/>
 
 
         <TextView
@@ -162,7 +149,8 @@
             android:background="@color/card_deep_blue"
             android:backgroundTint="@color/card_deep_blue"
             app:layout_columnWeight="1"
-            app:layout_rowWeight="1"/>
+            app:layout_rowWeight="1"
+            android:onClick="cardOnClick"/>
 
     </androidx.gridlayout.widget.GridLayout>
 
