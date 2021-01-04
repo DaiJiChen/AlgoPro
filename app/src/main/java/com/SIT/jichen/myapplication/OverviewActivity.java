@@ -39,7 +39,9 @@ public class OverviewActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.i("algo item clicked", algosName[i]);
 
-
+                Intent intent = new Intent(getApplicationContext(), AlgoActivity.class);
+                intent.putExtra("AlgoName", algosName[i]);
+                startActivity(intent);
             }
         });
     }
