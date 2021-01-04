@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/coordinator"
@@ -9,29 +10,74 @@
     tools:context=".AlgoFragment">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar"
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:background="@android:color/transparent"
         android:theme="@style/AppTheme.AppBarOverlay"
-        app:elevation="5dp">
-    </com.google.android.material.appbar.AppBarLayout>
+        app:elevation="5dp"
+        app:expanded="true">
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_scrollFlags="scroll|enterAlways"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:background="@color/super_Deep_Blue"
         android:src="@drawable/ic_play"
-        app:layout_anchor="@id/app_bar"
+        app:layout_anchor="@id/appBarLayout"
         app:layout_anchorGravity="bottom|right|end" />
 
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:text="aaa\naaa\nccc"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:text="aaa\naaa\nccc" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:text="aaa\naaa\nccc" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:text="aaa\naaa\nccc" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:text="aaa\naaa\nccc" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:text="aaa\naaa\nccc" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
