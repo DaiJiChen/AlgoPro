@@ -11,9 +11,10 @@
         android:id="@+id/UnitLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:layout_marginTop="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/UnitName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -31,8 +32,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Explanation, Animation and CodeDemo"
-            android:textSize="16sp"
-            android:textColor="@color/text_grid" />
+            android:textColor="@color/text_grid"
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -42,6 +43,7 @@
         android:layout_height="wrap_content"
         android:background="@color/super_Deep_Blue"
         android:text="Sorting"
+        android:layout_marginTop="30dp"
         android:paddingLeft="10dp"
         android:paddingTop="2dp"
         android:paddingBottom="3dp"

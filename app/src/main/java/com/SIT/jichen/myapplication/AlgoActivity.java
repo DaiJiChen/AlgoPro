@@ -11,6 +11,8 @@ public class AlgoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_algo);
 
+        this.getSupportActionBar().hide();
+
         // create a fragment
         AlgoFragment algoFragment = AlgoFragment.getInstance(getString(R.string.bubble_sort));
         // use the FragmentManager to create a Fragment Transaction which allows us to add fragments to FrameLayout at runtime.

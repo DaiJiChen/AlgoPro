@@ -20,6 +20,8 @@ public class OverviewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overview);
 
+        this.getSupportActionBar().hide();
+
         Intent intent = getIntent();
         String unitName = intent.getStringExtra("UnitName");
         String[] algosName = MainActivity.allTopics.get(unitName);

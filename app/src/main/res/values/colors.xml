@@ -7,9 +7,14 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="text_grid">#F9474646</color>
+
     <color name="card_grid">#AAA8A8</color>
     <color name="card_deep_blue">#E6404FAF</color>
     <color name="card_yellow">#EBF6BE30</color>
+
+    <color name="text_grid">#F9474646</color>
+
     <color name="super_Deep_Blue">#002984</color>
+    <color name="light_Blue">#5e92f3</color>
+
 </resources>
