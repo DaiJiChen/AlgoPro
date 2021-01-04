@@ -61,7 +61,6 @@
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
             android:background="@color/card_grid"
-            android:backgroundTint="@color/card_grid"
             app:layout_columnWeight="1"
             app:layout_rowWeight="1"
             android:onClick="cardOnClick"/>
@@ -78,7 +77,6 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:background="@color/card_yellow"
-            android:backgroundTint="@color/card_yellow"
             app:layout_columnWeight="1"
             app:layout_rowWeight="1"
             android:onClick="cardOnClick"/>
@@ -94,8 +92,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/card_light_blue"
-            android:backgroundTint="@color/card_light_blue"
+            android:background="@color/card_deep_blue"
             app:layout_columnWeight="1"
             app:layout_rowWeight="1"
             android:onClick="cardOnClick"/>
@@ -112,7 +109,6 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:background="@color/card_grid"
-            android:backgroundTint="@color/card_grid"
             app:layout_columnWeight="1"
             app:layout_rowWeight="1"
             android:onClick="cardOnClick"/>
@@ -129,7 +125,6 @@
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
             android:background="@color/card_yellow"
-            android:backgroundTint="@color/card_yellow"
             app:layout_columnWeight="1"
             app:layout_rowWeight="1"
             android:onClick="cardOnClick"/>
@@ -147,7 +142,6 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:background="@color/card_deep_blue"
-            android:backgroundTint="@color/card_deep_blue"
             app:layout_columnWeight="1"
             app:layout_rowWeight="1"
             android:onClick="cardOnClick"/>

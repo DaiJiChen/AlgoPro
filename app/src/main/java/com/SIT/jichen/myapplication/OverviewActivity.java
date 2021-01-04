@@ -38,6 +38,8 @@ public class OverviewActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.i("algo item clicked", algosName[i]);
+
+
             }
         });
     }

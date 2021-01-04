@@ -11,10 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AlgoPro">
-        <activity
-            android:name=".algoActivity"
-            android:label="@string/title_activity_algo"
-            android:theme="@style/Theme.AlgoPro.NoActionBar"></activity>
+        <activity android:name=".AlgoActivity"></activity>
         <activity android:name=".OverviewActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
