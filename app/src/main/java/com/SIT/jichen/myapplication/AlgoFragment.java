@@ -79,17 +79,17 @@ public class AlgoFragment extends Fragment {
 
         switch (algorithmKey) {
             case Constants.BINARY_SEARCH:
-                visualizer = new BinarySearchVisualizer(getActivity());
-                appBarLayout.addView(visualizer);
-                algorithm = new BinarySearch((BinarySearchVisualizer) visualizer, getActivity());
-                ((BinarySearch) algorithm).setData(util.createArray(15, true));
-                break;
-            case Constants.LINEAR_SEARCH:
-                visualizer = new BinarySearchVisualizer(getActivity());
-                appBarLayout.addView(visualizer);
-                algorithm = new LinearSearch((BinarySearchVisualizer) visualizer, getActivity());
-                ((LinearSearch) algorithm).setData(util.createArray(15, false));
-                break;
+//                visualizer = new BinarySearchVisualizer(getActivity());
+//                appBarLayout.addView(visualizer);
+//                algorithm = new BinarySearch((BinarySearchVisualizer) visualizer, getActivity());
+//                ((BinarySearch) algorithm).setData(util.createArray(15, true));
+//                break;
+//            case Constants.LINEAR_SEARCH:
+//                visualizer = new BinarySearchVisualizer(getActivity());
+//                appBarLayout.addView(visualizer);
+//                algorithm = new LinearSearch((BinarySearchVisualizer) visualizer, getActivity());
+//                ((LinearSearch) algorithm).setData(util.createArray(15, false));
+//                break;
             case Constants.BUBBLE_SORT:
                 visualizer = new SortingVisualizer(getActivity());
                 appBarLayout.addView(visualizer);
@@ -107,63 +107,60 @@ public class AlgoFragment extends Fragment {
                 appBarLayout.addView(visualizer);
                 algorithm = new SelectionSort((SortingVisualizer) visualizer, getActivity());
                 ((SelectionSort) algorithm).setData(util.createRandomArray(15));
-                break;
-            case Constants.QUICKSORT:
-                visualizer = new SortingVisualizer(getActivity());
-                appBarLayout.addView(visualizer);
-                algorithm = new QuickSort((SortingVisualizer) visualizer, getActivity());
-                ((QuickSort) algorithm).setData(util.createRandomArray(15));
-                break;
-            case Constants.BST_SEARCH:
-                visualizer = new BSTVisualizer(getActivity());
-                appBarLayout.addView(visualizer);
-                algorithm = new BSTAlgorithm((BSTVisualizer) visualizer, getActivity());
-                ((BSTAlgorithm) algorithm).setData(util.createBinaryTree());
-                break;
-            case Constants.BST_INSERT:
-                visualizer = new BSTVisualizer(getActivity(), 280);
-                ArrayVisualizer arrayVisualizer = new ArrayVisualizer(getActivity());
-                appBarLayout.addView(visualizer);
-                appBarLayout.addView(arrayVisualizer);
-                algorithm = new BSTAlgorithm((BSTVisualizer) visualizer, getActivity());
-                ((BSTAlgorithm) algorithm).setArrayVisualizer(arrayVisualizer);
-                ((BSTAlgorithm) algorithm).setData(util.createBinaryTree());
-                break;
-            case Constants.LINKED_LIST:
-                visualizer = new LinkedListVisualizer(getActivity());
-                LinkedListControls controls = new LinkedListControls(getActivity(), floatingActionButton);
-                appBarLayout.addView(visualizer);
-                appBarLayout.addView(controls);
-                algorithm = new LinkedList((LinkedListVisualizer) visualizer, getActivity());
-                ((LinkedList) algorithm).setData(util.createLinkedList());
-                controls.setLinkedList((LinkedList) algorithm);
-                break;
-            case Constants.STACK:
-                visualizer = new StackVisualizer(getActivity());
-                StackControls stackcontrols = new StackControls(getActivity(), floatingActionButton);
-                appBarLayout.addView(visualizer);
-                appBarLayout.addView(stackcontrols);
-                algorithm = new Stack(5, (StackVisualizer) visualizer, getActivity());
-                ((Stack) algorithm).setData(util.createStack());
-                stackcontrols.setStack((Stack) algorithm);
-                floatingActionButton.setVisibility(View.GONE);
-                break;
-            case Constants.BFS:
-            case Constants.DFS:
-                visualizer = new DirectedGraphVisualizer(getActivity());
-                appBarLayout.addView(visualizer);
-                algorithm = new GraphTraversalAlgorithm((DirectedGraphVisualizer) visualizer, getActivity());
-                ((GraphTraversalAlgorithm) algorithm).setData(util.createDirectedGraph());
-                break;
-            case Constants.DIJKSTRA:
-                visualizer = new WeightedGraphVisualizer2(getActivity());
-                appBarLayout.addView(visualizer);
-                algorithm = new DijkstraAgorithm((WeightedGraphVisualizer2) visualizer, getActivity());
-                ((DijkstraAgorithm) algorithm).setData(util.createWeightedGraph2(5));
-                break;
-            case Constants.N_QUEENS:
-                visualizer = null;
-                break;
+//                break;
+//            case Constants.QUICKSORT:
+//                visualizer = new SortingVisualizer(getActivity());
+//                appBarLayout.addView(visualizer);
+//                algorithm = new QuickSort((SortingVisualizer) visualizer, getActivity());
+//                ((QuickSort) algorithm).setData(util.createRandomArray(15));
+//                break;
+//            case Constants.BST_SEARCH:
+//                visualizer = new BSTVisualizer(getActivity());
+//                appBarLayout.addView(visualizer);
+//                algorithm = new BSTAlgorithm((BSTVisualizer) visualizer, getActivity());
+//                ((BSTAlgorithm) algorithm).setData(util.createBinaryTree());
+//                break;
+//            case Constants.BST_INSERT:
+//                visualizer = new BSTVisualizer(getActivity(), 280);
+//                ArrayVisualizer arrayVisualizer = new ArrayVisualizer(getActivity());
+//                appBarLayout.addView(visualizer);
+//                appBarLayout.addView(arrayVisualizer);
+//                algorithm = new BSTAlgorithm((BSTVisualizer) visualizer, getActivity());
+//                ((BSTAlgorithm) algorithm).setArrayVisualizer(arrayVisualizer);
+//                ((BSTAlgorithm) algorithm).setData(util.createBinaryTree());
+//                break;
+//            case Constants.LINKED_LIST:
+//                visualizer = new LinkedListVisualizer(getActivity());
+//                LinkedListControls controls = new LinkedListControls(getActivity(), floatingActionButton);
+//                appBarLayout.addView(visualizer);
+//                appBarLayout.addView(controls);
+//                algorithm = new LinkedList((LinkedListVisualizer) visualizer, getActivity());
+//                ((LinkedList) algorithm).setData(util.createLinkedList());
+//                controls.setLinkedList((LinkedList) algorithm);
+//                break;
+//            case Constants.STACK:
+//                visualizer = new StackVisualizer(getActivity());
+//                StackControls stackcontrols = new StackControls(getActivity(), floatingActionButton);
+//                appBarLayout.addView(visualizer);
+//                appBarLayout.addView(stackcontrols);
+//                algorithm = new Stack(5, (StackVisualizer) visualizer, getActivity());
+//                ((Stack) algorithm).setData(util.createStack());
+//                stackcontrols.setStack((Stack) algorithm);
+//                floatingActionButton.setVisibility(View.GONE);
+//                break;
+//            case Constants.BFS:
+//            case Constants.DFS:
+//                visualizer = new DirectedGraphVisualizer(getActivity());
+//                appBarLayout.addView(visualizer);
+//                algorithm = new GraphTraversalAlgorithm((DirectedGraphVisualizer) visualizer, getActivity());
+//                ((GraphTraversalAlgorithm) algorithm).setData(util.createDirectedGraph());
+//                break;
+//            case Constants.DIJKSTRA:
+//                visualizer = new WeightedGraphVisualizer2(getActivity());
+//                appBarLayout.addView(visualizer);
+//                algorithm = new DijkstraAgorithm((WeightedGraphVisualizer2) visualizer, getActivity());
+//                ((DijkstraAgorithm) algorithm).setData(util.createWeightedGraph2(5));
+//                break;
             default:
                 visualizer = null;
         }
