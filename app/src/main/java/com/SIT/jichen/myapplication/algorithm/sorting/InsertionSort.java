@@ -20,7 +20,6 @@ public class InsertionSort extends SortAlgorithm {
     }
 
     private void sort() {
-        logArray("Original array - " ,array);
 
         int n = array.length;
         for (int j = 1; j < n; j++) {
@@ -29,13 +28,11 @@ public class InsertionSort extends SortAlgorithm {
             while ( (i > -1) && ( array [i] > key ) ) {
                 array [i+1] = array [i];
                 highlightSwap(i, i + 1);
-                addLog("Swapping " + array[i] + " and " + array[i + 1]);
                 i--;
             }
             sleep();
             array[i+1] = key;
         }
-        addLog("Array has been sorted");
         completed();
     }
 

@@ -41,7 +41,7 @@
         android:id="@+id/UnitName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/super_Deep_Blue"
+        android:background="@color/deep_Blue"
         android:text="Sorting"
         android:layout_marginTop="30dp"
         android:paddingLeft="10dp"

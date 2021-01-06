@@ -14,7 +14,10 @@
 
     <color name="text_grid">#F9474646</color>
 
-    <color name="super_Deep_Blue">#002984</color>
-    <color name="light_Blue">#5e92f3</color>
+    <color name="deep_Blue">#002171</color>
+    <color name="medium_Blue">#0d47a1</color>
+    <color name="light_Blue">#03DAC6</color>
+
+    <color name="red">#B00020</color>
 
 </resources>

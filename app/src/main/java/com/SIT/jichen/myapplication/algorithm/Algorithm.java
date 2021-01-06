@@ -92,36 +92,6 @@ public class Algorithm extends HandlerThread {
         this.started = started;
     }
 
-    public void addLog(final String log) {
-//        if (logFragment != null) {
-//            activity.runOnUiThread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    logFragment.addLog(log);
-//                }
-//            });
-//        }
-    }
-
-    public void clearLog() {
-//        if (logFragment!=null) {
-//            activity.runOnUiThread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    logFragment.clearLog();
-//                }
-//            });
-//        }
-    }
-
-    public void logArray(String message, final int[] array) {
-        String arrayString = "";
-        for (int i : array) {
-            arrayString = arrayString.concat(" " + String.valueOf(i) + " ");
-        }
-        addLog(message + "[ "+arrayString +" ] total items - "+ array.length);
-    }
-
     public void setCompletionListener(AlgoCompletionListener completionListener) {
         this.completionListener = completionListener;
     }

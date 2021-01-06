@@ -16,15 +16,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
-import com.SIT.jichen.myapplication.algorithm.Algorithm;
-import com.SIT.jichen.myapplication.algorithm.AllCodeDemo;
-import com.SIT.jichen.myapplication.algorithm.list.LinearSearch;
+import com.SIT.jichen.myapplication.algorithm.*;
 import com.SIT.jichen.myapplication.visualization.*;
-import com.SIT.jichen.myapplication.visualization.graph.*;
-import com.SIT.jichen.myapplication.algorithm.graph.*;
-import com.SIT.jichen.myapplication.algorithm.list.*;
 import com.SIT.jichen.myapplication.algorithm.sorting.*;
-import com.SIT.jichen.myapplication.algorithm.tree.bst.*;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -82,32 +76,32 @@ public class AlgoFragment extends Fragment {
 //                visualizer = new BinarySearchVisualizer(getActivity());
 //                appBarLayout.addView(visualizer);
 //                algorithm = new BinarySearch((BinarySearchVisualizer) visualizer, getActivity());
-//                ((BinarySearch) algorithm).setData(util.createArray(15, true));
+//                ((BinarySearch) algorithm).setData(util.createArray(7, true));
 //                break;
 //            case Constants.LINEAR_SEARCH:
 //                visualizer = new BinarySearchVisualizer(getActivity());
 //                appBarLayout.addView(visualizer);
 //                algorithm = new LinearSearch((BinarySearchVisualizer) visualizer, getActivity());
-//                ((LinearSearch) algorithm).setData(util.createArray(15, false));
+//                ((LinearSearch) algorithm).setData(util.createArray(7, false));
 //                break;
             case Constants.BUBBLE_SORT:
                 visualizer = new SortingVisualizer(getActivity());
                 appBarLayout.addView(visualizer);
                 algorithm = new BubbleSort((SortingVisualizer) visualizer, getActivity());
-                ((BubbleSort) algorithm).setData(util.createRandomArray(15));
+                ((BubbleSort) algorithm).setData(util.createRandomArray(Constants.NUM_ITEM_IN_SORT));
                 break;
             case Constants.INSERTION_SORT:
                 visualizer = new SortingVisualizer(getActivity());
                 appBarLayout.addView(visualizer);
                 algorithm = new InsertionSort((SortingVisualizer) visualizer, getActivity());
-                ((InsertionSort) algorithm).setData(util.createRandomArray(15));
+                ((InsertionSort) algorithm).setData(util.createRandomArray(Constants.NUM_ITEM_IN_SORT));
                 break;
             case Constants.SELECTION_SORT:
                 visualizer = new SortingVisualizer(getActivity());
                 appBarLayout.addView(visualizer);
                 algorithm = new SelectionSort((SortingVisualizer) visualizer, getActivity());
-                ((SelectionSort) algorithm).setData(util.createRandomArray(15));
-//                break;
+                ((SelectionSort) algorithm).setData(util.createRandomArray(Constants.NUM_ITEM_IN_SORT));
+                break;
 //            case Constants.QUICKSORT:
 //                visualizer = new SortingVisualizer(getActivity());
 //                appBarLayout.addView(visualizer);
@@ -163,6 +157,7 @@ public class AlgoFragment extends Fragment {
 //                break;
             default:
                 visualizer = null;
+
         }
 
         Algorithm.setInterval(Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(getActivity())

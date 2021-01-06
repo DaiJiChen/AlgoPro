@@ -20,7 +20,6 @@ public class SelectionSort extends SortAlgorithm {
     }
 
     private void sort() {
-        logArray("Original array - " ,array);
 
         int n = array.length;
         for (int i = 0; i < n-1; i++) {
@@ -31,12 +30,10 @@ public class SelectionSort extends SortAlgorithm {
                 }
             int temp = array[min_idx];
             array[min_idx] = array[i];
-            addLog("Swapping " + array[i] + " and " + temp);
             highlightSwap(min_idx,i);
             array[i] = temp;
             sleep();
         }
-        addLog("Array has been sorted");
         completed();
     }
 

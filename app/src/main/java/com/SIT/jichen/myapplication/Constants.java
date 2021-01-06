@@ -1,6 +1,10 @@
 package com.SIT.jichen.myapplication;
 
 public class Constants {
+    public static final int NUM_ITEM_IN_SORT = 7;
+    public static final int VISUALIZATION_WINDOW_HEIGHT = 200;  // dp
+
+
     public static final String ALGORITHM_KEY = "algorithm_key";
     public static final String COMMAND_START_ALGORITHM = "start";
     public static final String BUBBLE_SORT = "bubble_sort";
@@ -21,4 +25,6 @@ public class Constants {
     public static final String N_QUEENS = "n_queens";
 
     public static final String KEY_INTERVAL = "preference_interval";
+
+
 }

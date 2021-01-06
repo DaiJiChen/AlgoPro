@@ -7,6 +7,10 @@ import android.graphics.Paint;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 
+import androidx.core.content.ContextCompat;
+
+import com.SIT.jichen.myapplication.R;
+
 public class SortingVisualizer extends AlgoVisualizer {
 
     Paint paint;
@@ -17,7 +21,7 @@ public class SortingVisualizer extends AlgoVisualizer {
 
     int highlightPositionOne = -1, highlightPositionTwo = -1;
     int highlightPosition = -1;
-    int lineStrokeWidth = getDimensionInPixel(10);
+    int lineStrokeWidth = getDimensionInPixel(20);
 
     public SortingVisualizer(Context context) {
         super(context);
@@ -31,15 +35,15 @@ public class SortingVisualizer extends AlgoVisualizer {
 
     private void initialise() {
         paint = new Paint();
-        paint.setColor(Color.parseColor("#009688"));
+        paint.setColor(ContextCompat.getColor(getContext(), R.color.medium_Blue));
         paint.setStyle(Paint.Style.FILL);
         paint.setStrokeWidth(lineStrokeWidth);
 
         highlightPaintSwap = new Paint(paint);
-        highlightPaintSwap.setColor(Color.RED);
+        highlightPaintSwap.setColor(ContextCompat.getColor(getContext(), R.color.red));
 
         highlightPaintTrace = new Paint(paint);
-        highlightPaintTrace.setColor(Color.BLUE);
+        highlightPaintTrace.setColor(ContextCompat.getColor(getContext(), R.color.light_Blue));
 
         textPaint = new TextPaint();
         textPaint.setColor(Color.BLACK);

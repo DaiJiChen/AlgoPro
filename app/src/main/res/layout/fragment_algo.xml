@@ -10,13 +10,13 @@
     android:fitsSystemWindows="true"
     tools:context=".AlgoFragment">
 
-    <!--        android:background="@android:color/transparent"-->
+<!--    android:background="@android:color/transparent"-->
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:background="@color/light_Blue"
+        android:background="@android:color/transparent"
         android:theme="@style/AppTheme.AppBarOverlay"
         app:elevation="5dp"
         app:expanded="true">

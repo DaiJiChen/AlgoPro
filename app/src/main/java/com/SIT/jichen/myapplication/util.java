@@ -1,12 +1,5 @@
 package com.SIT.jichen.myapplication;
 
-import com.SIT.jichen.myapplication.algorithm.graph.Digraph;
-import com.SIT.jichen.myapplication.algorithm.graph.WeightedGraph;
-import com.SIT.jichen.myapplication.algorithm.graph.WeightedGraph2;
-import com.SIT.jichen.myapplication.algorithm.list.LinkedList;
-import com.SIT.jichen.myapplication.algorithm.list.Stack;
-import com.naman.algovisualizer.algorithm.tree.bst.BinarySearchTree;
-
 import android.content.Context;
 import java.io.IOException;
 import java.io.InputStream;
@@ -49,138 +42,138 @@ public class util {
         return intArray;
     }
 
-    public static BinarySearchTree createBinaryTree() {
-        BinarySearchTree b = new BinarySearchTree();
-        for (int i = 0; i < bst_array.length; i++) {
-            b.insert(bst_array[i]);
-        }
-        return b;
-
-    }
-
-    public static LinkedList createLinkedList() {
-        LinkedList ll = new LinkedList();
-        int[] array = createUniqueRandomArray(5);
-        for (int i = 0; i < array.length; i++) {
-            ll.add(array[i]);
-        }
-        return ll;
-
-    }
-
-    public static Stack createStack() {
-        Stack stack = new Stack(8);
-        ArrayList<Integer> a = new ArrayList<>();
-        for (int i = 10; i <= 13; i++) {
-            a.add(i);
-        }
-        Collections.shuffle(a);
-
-        for (int i = 0; i < a.size(); i++) {
-            stack.push(a.get(i));
-        }
-        return stack;
-
-    }
-
-    public static Digraph createDirectedGraph() {
-        Digraph graph = new Digraph();
-        graph.add(0, 1);
-        graph.add(0, 2);
-        graph.add(1, 3);
-        graph.add(3, 7);
-        graph.add(3, 8);
-        graph.add(1, 4);
-        graph.add(4, 9);
-        graph.add(4, 10);
-        graph.add(2, 5);
-        graph.add(2, 6);
-
-        double[][] array = {
-                {0, 2, 6, 5, 1, 4, 10, 9, 3, 8, 7}, //nodes
-                {1, 5, -1, -1, 3, 9, -1, -1, 7, -1, -1},//left child
-                {2, 6, -1, -1, 4, 10, -1, -1, 8, -1, -1}, //right child
-                {0, 1.5, 2.5, 1, 1.5, 0.5, 0, 1, 2.5, 2, 3}, //number of left/right nodes from root in horizontal
-                {0, 1, 2.5, 2.5, 1, 2, 3, 3, 2, 3, 3}, //number of left/right nodes from root in vertical
-                {-1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1} //is the node left of the root?
-        };
-        graph.setDirectedArray(array);
-        return graph;
-    }
-
-    public static WeightedGraph createWeightedGraph(int vertex) {
-
-        int E = 8;
-
-        WeightedGraph graph = new WeightedGraph(vertex, E);
-
-        switch (new Random().nextInt(3)) {
-            case 0:
-                graph.addEdge(0, 0, 1, 1);
-                graph.addEdge(1, 0, 2, 4);
-                graph.addEdge(2, 1, 2, 7);
-                graph.addEdge(3, 1, 3, 9);
-                graph.addEdge(4, 1, 4, 2);
-                graph.addEdge(5, 3, 2, 15);
-                graph.addEdge(6, 0, 4, 4);
-                graph.addEdge(7, 4, 3, 3);
-                break;
-            case 1:
-                graph.addEdge(0, 0, 3, 1);
-                graph.addEdge(1, 0, 2, 4);
-                graph.addEdge(2, 1, 3, 9);
-                graph.addEdge(3, 1, 2, 2);
-                graph.addEdge(4, 1, 4, 7);
-                graph.addEdge(5, 2, 3, 5);
-                graph.addEdge(6, 3, 4, 12);
-                graph.addEdge(7, 4, 2, 3);
-                break;
-            case 2:
-                graph.addEdge(0, 4, 3, 1);
-                graph.addEdge(1, 4, 0, 4);
-                graph.addEdge(2, 0, 3, 8);
-                graph.addEdge(3, 0, 1, 2);
-                graph.addEdge(4, 0, 2, 14);
-                graph.addEdge(5, 2, 1, 5);
-                graph.addEdge(6, 2, 4, 6);
-                graph.addEdge(7, 1, 3, 3);
-                break;
-            case 3:
-                graph.addEdge(0, 0, 1, 1);
-                graph.addEdge(1, 0, 3, 4);
-                graph.addEdge(2, 0, 4, 7);
-                graph.addEdge(3, 4, 3, 8);
-                graph.addEdge(4, 3, 2, 2);
-                graph.addEdge(5, 4, 2, 9);
-                graph.addEdge(6, 1, 4, 3);
-                graph.addEdge(7, 2, 1, 2);
-                break;
-        }
-
-
-        return graph;
-
-    }
-
-    public static WeightedGraph2 createWeightedGraph2(int size) {
-        WeightedGraph2 graph = new WeightedGraph2(size);
-        graph.setLabel(0, 0);
-        graph.setLabel(1, 1);
-        graph.setLabel(2, 2);
-        graph.setLabel(3, 3);
-        graph.setLabel(4, 4);
-        graph.addEdge(0, 1, 2);
-        graph.addEdge(0, 4, 9);
-        graph.addEdge(1, 2, 8);
-        graph.addEdge(1, 3, 15);
-        graph.addEdge(1, 4, 6);
-        graph.addEdge(2, 3, 1);
-        graph.addEdge(4, 3, 3);
-        graph.addEdge(4, 2, 7);
-        graph.addEdge(3, 4, 3);
-
-        return graph;
-    }
+//    public static BinarySearchTree createBinaryTree() {
+//        BinarySearchTree b = new BinarySearchTree();
+//        for (int i = 0; i < bst_array.length; i++) {
+//            b.insert(bst_array[i]);
+//        }
+//        return b;
+//
+//    }
+//
+//    public static LinkedList createLinkedList() {
+//        LinkedList ll = new LinkedList();
+//        int[] array = createUniqueRandomArray(5);
+//        for (int i = 0; i < array.length; i++) {
+//            ll.add(array[i]);
+//        }
+//        return ll;
+//
+//    }
+//
+//    public static Stack createStack() {
+//        Stack stack = new Stack(8);
+//        ArrayList<Integer> a = new ArrayList<>();
+//        for (int i = 10; i <= 13; i++) {
+//            a.add(i);
+//        }
+//        Collections.shuffle(a);
+//
+//        for (int i = 0; i < a.size(); i++) {
+//            stack.push(a.get(i));
+//        }
+//        return stack;
+//
+//    }
+//
+//    public static Digraph createDirectedGraph() {
+//        Digraph graph = new Digraph();
+//        graph.add(0, 1);
+//        graph.add(0, 2);
+//        graph.add(1, 3);
+//        graph.add(3, 7);
+//        graph.add(3, 8);
+//        graph.add(1, 4);
+//        graph.add(4, 9);
+//        graph.add(4, 10);
+//        graph.add(2, 5);
+//        graph.add(2, 6);
+//
+//        double[][] array = {
+//                {0, 2, 6, 5, 1, 4, 10, 9, 3, 8, 7}, //nodes
+//                {1, 5, -1, -1, 3, 9, -1, -1, 7, -1, -1},//left child
+//                {2, 6, -1, -1, 4, 10, -1, -1, 8, -1, -1}, //right child
+//                {0, 1.5, 2.5, 1, 1.5, 0.5, 0, 1, 2.5, 2, 3}, //number of left/right nodes from root in horizontal
+//                {0, 1, 2.5, 2.5, 1, 2, 3, 3, 2, 3, 3}, //number of left/right nodes from root in vertical
+//                {-1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1} //is the node left of the root?
+//        };
+//        graph.setDirectedArray(array);
+//        return graph;
+//    }
+//
+//    public static WeightedGraph createWeightedGraph(int vertex) {
+//
+//        int E = 8;
+//
+//        WeightedGraph graph = new WeightedGraph(vertex, E);
+//
+//        switch (new Random().nextInt(3)) {
+//            case 0:
+//                graph.addEdge(0, 0, 1, 1);
+//                graph.addEdge(1, 0, 2, 4);
+//                graph.addEdge(2, 1, 2, 7);
+//                graph.addEdge(3, 1, 3, 9);
+//                graph.addEdge(4, 1, 4, 2);
+//                graph.addEdge(5, 3, 2, 15);
+//                graph.addEdge(6, 0, 4, 4);
+//                graph.addEdge(7, 4, 3, 3);
+//                break;
+//            case 1:
+//                graph.addEdge(0, 0, 3, 1);
+//                graph.addEdge(1, 0, 2, 4);
+//                graph.addEdge(2, 1, 3, 9);
+//                graph.addEdge(3, 1, 2, 2);
+//                graph.addEdge(4, 1, 4, 7);
+//                graph.addEdge(5, 2, 3, 5);
+//                graph.addEdge(6, 3, 4, 12);
+//                graph.addEdge(7, 4, 2, 3);
+//                break;
+//            case 2:
+//                graph.addEdge(0, 4, 3, 1);
+//                graph.addEdge(1, 4, 0, 4);
+//                graph.addEdge(2, 0, 3, 8);
+//                graph.addEdge(3, 0, 1, 2);
+//                graph.addEdge(4, 0, 2, 14);
+//                graph.addEdge(5, 2, 1, 5);
+//                graph.addEdge(6, 2, 4, 6);
+//                graph.addEdge(7, 1, 3, 3);
+//                break;
+//            case 3:
+//                graph.addEdge(0, 0, 1, 1);
+//                graph.addEdge(1, 0, 3, 4);
+//                graph.addEdge(2, 0, 4, 7);
+//                graph.addEdge(3, 4, 3, 8);
+//                graph.addEdge(4, 3, 2, 2);
+//                graph.addEdge(5, 4, 2, 9);
+//                graph.addEdge(6, 1, 4, 3);
+//                graph.addEdge(7, 2, 1, 2);
+//                break;
+//        }
+//
+//
+//        return graph;
+//
+//    }
+//
+//    public static WeightedGraph2 createWeightedGraph2(int size) {
+//        WeightedGraph2 graph = new WeightedGraph2(size);
+//        graph.setLabel(0, 0);
+//        graph.setLabel(1, 1);
+//        graph.setLabel(2, 2);
+//        graph.setLabel(3, 3);
+//        graph.setLabel(4, 4);
+//        graph.addEdge(0, 1, 2);
+//        graph.addEdge(0, 4, 9);
+//        graph.addEdge(1, 2, 8);
+//        graph.addEdge(1, 3, 15);
+//        graph.addEdge(1, 4, 6);
+//        graph.addEdge(2, 3, 1);
+//        graph.addEdge(4, 3, 3);
+//        graph.addEdge(4, 2, 7);
+//        graph.addEdge(3, 4, 3);
+//
+//        return graph;
+//    }
 
 
     public static int[] createArray(int size, boolean sorted) {
