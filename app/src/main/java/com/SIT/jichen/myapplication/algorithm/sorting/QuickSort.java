@@ -20,13 +20,11 @@ public class QuickSort extends SortAlgorithm {
     }
 
     private void sort() {
-        logArray("Original array - ", array);
         if (array == null || array.length == 0) {
             return;
         }
         int length = array.length;
         quickSort(0, length - 1);
-        addLog("Array has been sorted");
         completed();
     }
 
@@ -37,7 +35,6 @@ public class QuickSort extends SortAlgorithm {
         int j = higherIndex;
         int pivot = array[lowerIndex + (higherIndex - lowerIndex) / 2];
         highlightTrace(pivot);
-        addLog("Pivot element is " + pivot);
 
         while (i <= j) {
             while (array[i] < pivot) {
@@ -49,8 +46,6 @@ public class QuickSort extends SortAlgorithm {
             if (i <= j) {
                 swap(i, j);
                 highlightSwap(i, j);
-                addLog("Swapping " + array[i] + " and " + array[j]);
-                //move index to next position on both sides
                 i++;
                 j--;
             }
