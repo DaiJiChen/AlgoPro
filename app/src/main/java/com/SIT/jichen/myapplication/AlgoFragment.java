@@ -1,19 +1,14 @@
 package com.SIT.jichen.myapplication;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.SIT.jichen.myapplication.algorithm.*;
@@ -38,7 +33,7 @@ public class AlgoFragment extends Fragment {
     public static AlgoFragment getInstance(String algoName) {
         AlgoFragment algoFragment = new AlgoFragment();
         Bundle bundle = new Bundle();
-        bundle.putString(Constants.ALGORITHM_KEY, algoName);
+        bundle.putString(Constants.ALGO_NAME, algoName);
         algoFragment.setArguments(bundle);
         return algoFragment;
     }
@@ -52,7 +47,7 @@ public class AlgoFragment extends Fragment {
         floatingActionButton = (FloatingActionButton) rootView.findViewById(R.id.floatingActionButton);
         codeView = (CodeView) rootView.findViewById(R.id.code_view);
 
-        setupFragment(getArguments().getString(Constants.ALGORITHM_KEY));
+        setupFragment(getArguments().getString(Constants.ALGO_NAME));
 
         return rootView;
     }
@@ -73,17 +68,17 @@ public class AlgoFragment extends Fragment {
 
         switch (algorithmKey) {
             case Constants.BINARY_SEARCH:
-//                visualizer = new BinarySearchVisualizer(getActivity());
-//                appBarLayout.addView(visualizer);
-//                algorithm = new BinarySearch((BinarySearchVisualizer) visualizer, getActivity());
-//                ((BinarySearch) algorithm).setData(util.createArray(7, true));
-//                break;
-//            case Constants.LINEAR_SEARCH:
-//                visualizer = new BinarySearchVisualizer(getActivity());
-//                appBarLayout.addView(visualizer);
-//                algorithm = new LinearSearch((BinarySearchVisualizer) visualizer, getActivity());
-//                ((LinearSearch) algorithm).setData(util.createArray(7, false));
-//                break;
+                visualizer = new BinarySearchVisualizer(getActivity());
+                appBarLayout.addView(visualizer);
+                algorithm = new BinarySearch((BinarySearchVisualizer) visualizer, getActivity());
+                ((BinarySearch) algorithm).setData(util.createArray(7, true));
+                break;
+            case Constants.LINEAR_SEARCH:
+                visualizer = new BinarySearchVisualizer(getActivity());
+                appBarLayout.addView(visualizer);
+                algorithm = new LinearSearch((BinarySearchVisualizer) visualizer, getActivity());
+                ((LinearSearch) algorithm).setData(util.createArray(7, false));
+                break;
             case Constants.BUBBLE_SORT:
                 visualizer = new SortingVisualizer(getActivity());
                 appBarLayout.addView(visualizer);
@@ -102,12 +97,12 @@ public class AlgoFragment extends Fragment {
                 algorithm = new SelectionSort((SortingVisualizer) visualizer, getActivity());
                 ((SelectionSort) algorithm).setData(util.createRandomArray(Constants.NUM_ITEM_IN_SORT));
                 break;
-//            case Constants.QUICKSORT:
-//                visualizer = new SortingVisualizer(getActivity());
-//                appBarLayout.addView(visualizer);
-//                algorithm = new QuickSort((SortingVisualizer) visualizer, getActivity());
-//                ((QuickSort) algorithm).setData(util.createRandomArray(15));
-//                break;
+            case Constants.QUICK_SORT:
+                visualizer = new SortingVisualizer(getActivity());
+                appBarLayout.addView(visualizer);
+                algorithm = new QuickSort((SortingVisualizer) visualizer, getActivity());
+                ((QuickSort) algorithm).setData(util.createRandomArray(15));
+                break;
 //            case Constants.BST_SEARCH:
 //                visualizer = new BSTVisualizer(getActivity());
 //                appBarLayout.addView(visualizer);
@@ -211,7 +206,7 @@ public class AlgoFragment extends Fragment {
                 case Constants.SELECTION_SORT:
                     addCodeItem(AllCodeDemo.CODE_SELECTION_SORT);
                     break;
-                case Constants.QUICKSORT:
+                case Constants.QUICK_SORT:
                     addCodeItem(AllCodeDemo.CODE_QUICKSORT);
                     break;
                 case Constants.BST_SEARCH:
@@ -240,9 +235,6 @@ public class AlgoFragment extends Fragment {
                     break;
                 case Constants.DFS:
                     addCodeItem(AllCodeDemo.CODE_GRAPH_DFS);
-                    break;
-                case Constants.BELLMAN_FORD:
-                    addCodeItem(AllCodeDemo.CODE_BELLMAN_FORD);
                     break;
                 case Constants.DIJKSTRA:
                     addCodeItem(AllCodeDemo.CODE_DIJKSTRA);

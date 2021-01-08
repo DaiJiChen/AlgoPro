@@ -18,64 +18,67 @@ public class MainActivity extends AppCompatActivity {
     public static HashMap<String, String[]> allTopics = new HashMap<>();
 
     public void addAllTopics() {
-        String[] SearchAlgos = {"Brute Force", "Two Pointer Technique"};
-        String[] TreeAlgos = {"BFS", "DFS"};
-        String[] StackAndQueueAlgos = {"queue", "stack"};
-        String[] SortingAlgos = {"Bubble Sort", "Selection Sort"};
+        String[] SearchAlgos = {Constants.LINEAR_SEARCH, Constants.BINARY_SEARCH};
+        String[] TreeAlgos = {Constants.BST_INSERT, Constants.BST_SEARCH};
+        String[] ListAlgos = {Constants.LINKED_LIST, Constants.STACK, Constants.QUEUE};
+        String[] SortingAlgos = {Constants.BUBBLE_SORT, Constants.SELECTION_SORT, Constants.INSERTION_SORT, Constants.QUICK_SORT};
         String[] HashMapAlgos = {"A", "B"};
-        String[] GraphAlgos = {"BFS", "DFS", "Dijkstra's Algorithm"};
+        String[] GraphAlgos = {Constants.BFS, Constants.DFS, Constants.DIJKSTRA};
 
-        allTopics.put("Search", SearchAlgos);
-        allTopics.put("Tree", TreeAlgos);
-        allTopics.put("StackAndQueue", StackAndQueueAlgos);
-        allTopics.put("Sorting", SortingAlgos);
-        allTopics.put("HashMap", HashMapAlgos);
-        allTopics.put("Graph", GraphAlgos);
+        allTopics.put(Constants.SEARCH, SearchAlgos);
+        allTopics.put(Constants.TREE, TreeAlgos);
+        allTopics.put(Constants.LIST, ListAlgos);
+        allTopics.put(Constants.SORTING, SortingAlgos);
+        allTopics.put(Constants.HASHMAP, HashMapAlgos);
+        allTopics.put(Constants.GRAPH, GraphAlgos);
     }
 
     public void cardOnClick(View view) {
         TextView cardName = (TextView) view;
-        if(cardName.getText().equals("Search")) {
-            Log.i("Card Clicked", "Search");
+        if(cardName.getText().equals(Constants.SEARCH)) {
+            Log.i("Card Clicked", Constants.SEARCH);
 
             Intent intent = new Intent(this, OverviewActivity.class);
-            intent.putExtra("UnitName", "Search");
+            intent.putExtra(Constants.UNIT_NAME, Constants.SEARCH);
             startActivity(intent);
         }
-        else if(cardName.getText().equals("Tree")) {
-            Log.i("Card Clicked", "Tree");
+        else if(cardName.getText().equals(Constants.TREE)) {
+            Log.i("Card Clicked", Constants.TREE);
 
             Intent intent = new Intent(this, OverviewActivity.class);
-            intent.putExtra("UnitName", "Tree");
+            intent.putExtra(Constants.UNIT_NAME, Constants.TREE);
             startActivity(intent);
         }
-        else if(cardName.getText().equals("Stack\nand\nQueue")) {
-            Log.i("Card Clicked", "Stack and Queue");
+        else if(cardName.getText().equals(Constants.LIST)) {
+            Log.i("Card Clicked", Constants.LIST);
 
             Intent intent = new Intent(this, OverviewActivity.class);
-            intent.putExtra("UnitName", "Stack and Queue");
+            intent.putExtra(Constants.UNIT_NAME, Constants.LIST);
             startActivity(intent);
         }
-        else if(cardName.getText().equals("Sorting")) {
-            Log.i("Card Clicked", "Sorting");
+        else if(cardName.getText().equals(Constants.SORTING)) {
+            Log.i("Card Clicked", Constants.SORTING);
 
             Intent intent = new Intent(this, OverviewActivity.class);
-            intent.putExtra("UnitName", "Sorting");
+            intent.putExtra(Constants.UNIT_NAME, Constants.SORTING);
             startActivity(intent);
         }
-        else if(cardName.getText().equals("HashMap")) {
-            Log.i("Card Clicked", "HashMap");
+        else if(cardName.getText().equals(Constants.HASHMAP)) {
+            Log.i("Card Clicked", Constants.HASHMAP);
 
             Intent intent = new Intent(this, OverviewActivity.class);
-            intent.putExtra("UnitName", "HashMap");
+            intent.putExtra(Constants.UNIT_NAME, Constants.HASHMAP);
             startActivity(intent);
         }
-        else if(cardName.getText().equals("Graph")) {
-            Log.i("Card Clicked", "Graph");
+        else if(cardName.getText().equals(Constants.GRAPH)) {
+            Log.i("Card Clicked", Constants.GRAPH);
 
             Intent intent = new Intent(this, OverviewActivity.class);
-            intent.putExtra("UnitName", "Graph");
+            intent.putExtra(Constants.UNIT_NAME, Constants.GRAPH);
             startActivity(intent);
+        }
+        else {
+            Toast.makeText(getApplicationContext(), "Unknown unit", Toast.LENGTH_SHORT).show();
         }
     }
 

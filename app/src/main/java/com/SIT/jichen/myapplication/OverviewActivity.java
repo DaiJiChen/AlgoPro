@@ -23,12 +23,12 @@ public class OverviewActivity extends AppCompatActivity {
         this.getSupportActionBar().hide();
 
         Intent intent = getIntent();
-        String unitName = intent.getStringExtra("UnitName");
-        String[] algosName = MainActivity.allTopics.get(unitName);
+        String unitName = intent.getStringExtra(Constants.UNIT_NAME);
+        String[] algoNames = MainActivity.allTopics.get(unitName);
 
 
         ArrayList<String> algoArray = new ArrayList<>();
-        for(String algo : algosName)
+        for(String algo : algoNames)
             algoArray.add(algo);
 
         AlgoItemAdapter algoItemAdapter = new AlgoItemAdapter(this, algoArray);
@@ -39,10 +39,10 @@ public class OverviewActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.i("algo item clicked", algosName[i]);
+                Log.i("algo item clicked", algoNames[i]);
 
                 Intent intent = new Intent(getApplicationContext(), AlgoActivity.class);
-                intent.putExtra("AlgoName", algosName[i]);
+                intent.putExtra("AlgoName", algoNames[i]);
                 startActivity(intent);
             }
         });
