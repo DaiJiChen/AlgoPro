@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.SIT.jichen.myapplication.constants.Constants;
+
 import java.util.ArrayList;
 
 public class UnitActivity extends AppCompatActivity {

@@ -64,6 +64,8 @@
                 android:id="@+id/explanationText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingRight="10dp"
                 android:text="Text will show here\nxxx\nyyy\n\n\n\n\n\n\n\n\n\nzzz"
                 android:textColor="@color/black"/>
 
@@ -87,6 +89,8 @@
                 android:id="@+id/complexityText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingRight="10dp"
                 android:text="Text will show here\nxxx\nyyy\n\n\n\n\n\n\n\n\n\nzzz"
                 android:textColor="@color/black"/>
 
@@ -132,6 +136,8 @@
                 android:id="@+id/referenceText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingRight="10dp"
                 android:text="Text will show here\nxxx\nyyy\n\n\n\n\n\n\n\n\n\nzzz"
                 android:textColor="@color/black"/>
 

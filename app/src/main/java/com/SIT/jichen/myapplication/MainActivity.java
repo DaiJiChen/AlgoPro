@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.SIT.jichen.myapplication.constants.Constants;
+
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {

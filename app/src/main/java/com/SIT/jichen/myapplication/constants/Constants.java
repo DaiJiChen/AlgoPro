@@ -1,4 +1,4 @@
-package com.SIT.jichen.myapplication;
+package com.SIT.jichen.myapplication.constants;
 
 public class Constants {
     public static final int NUM_ITEM_IN_SORT = 7;
@@ -33,7 +33,7 @@ public class Constants {
 
     // List
     public static final String LIST = "List";
-    public static final String LINKED_LIST = "Linked List";
+    public static final String LINKED_LIST = "Linked List Basic Operations";
     public static final String STACK = "Stack";
     public static final String QUEUE = "Queue";
 

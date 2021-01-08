@@ -1,6 +1,9 @@
 package com.SIT.jichen.myapplication;
 
 import android.content.Context;
+
+import com.SIT.jichen.myapplication.algorithm.list.LinkedList;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -51,15 +54,15 @@ public class util {
 //
 //    }
 //
-//    public static LinkedList createLinkedList() {
-//        LinkedList ll = new LinkedList();
-//        int[] array = createUniqueRandomArray(5);
-//        for (int i = 0; i < array.length; i++) {
-//            ll.add(array[i]);
-//        }
-//        return ll;
-//
-//    }
+    public static LinkedList createLinkedList() {
+        LinkedList ll = new LinkedList();
+        int[] array = createUniqueRandomArray(5);
+        for (int i = 0; i < array.length; i++) {
+            ll.add(array[i]);
+        }
+        return ll;
+
+    }
 //
 //    public static Stack createStack() {
 //        Stack stack = new Stack(8);

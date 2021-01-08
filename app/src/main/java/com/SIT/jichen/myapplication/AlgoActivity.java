@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.SIT.jichen.myapplication.constants.Constants;
+
 public class AlgoActivity extends AppCompatActivity {
 
     @Override

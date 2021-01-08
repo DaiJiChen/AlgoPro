@@ -2,7 +2,7 @@ package com.SIT.jichen.myapplication.algorithm.sorting;
 
 import android.app.Activity;
 
-import com.SIT.jichen.myapplication.Constants;
+import com.SIT.jichen.myapplication.constants.Constants;
 import com.SIT.jichen.myapplication.visualization.SortingVisualizer;
 
 public class SelectionSort extends SortAlgorithm {

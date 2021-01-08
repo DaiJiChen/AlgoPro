@@ -6,6 +6,5 @@
     <string name="HashMap">HashMap</string>
     <string name="Graph">Graph</string>bubble_sort
     <string name="algo_name">algo_name</string>
-    <string name="text_demo">"Text\nwill\nshow\up\nhere"</string>
     <string name="a">2</string>
 </resources>

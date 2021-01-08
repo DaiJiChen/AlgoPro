@@ -13,8 +13,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.SIT.jichen.myapplication.algorithm.*;
+import com.SIT.jichen.myapplication.algorithm.list.LinkedList;
 import com.SIT.jichen.myapplication.algorithm.search.BinarySearch;
 import com.SIT.jichen.myapplication.algorithm.search.LinearSearch;
+import com.SIT.jichen.myapplication.constants.AlgoExplanations;
+import com.SIT.jichen.myapplication.constants.AllCodeDemo;
+import com.SIT.jichen.myapplication.constants.Constants;
 import com.SIT.jichen.myapplication.visualization.*;
 import com.SIT.jichen.myapplication.algorithm.sorting.*;
 import com.google.android.material.appbar.AppBarLayout;
@@ -128,15 +132,15 @@ public class AlgoFragment extends Fragment {
 //                ((BSTAlgorithm) algorithm).setArrayVisualizer(arrayVisualizer);
 //                ((BSTAlgorithm) algorithm).setData(util.createBinaryTree());
 //                break;
-//            case Constants.LINKED_LIST:
-//                visualizer = new LinkedListVisualizer(getActivity());
-//                LinkedListControls controls = new LinkedListControls(getActivity(), floatingActionButton);
-//                appBarLayout.addView(visualizer);
-//                appBarLayout.addView(controls);
-//                algorithm = new LinkedList((LinkedListVisualizer) visualizer, getActivity());
-//                ((LinkedList) algorithm).setData(util.createLinkedList());
-//                controls.setLinkedList((LinkedList) algorithm);
-//                break;
+            case Constants.LINKED_LIST:
+                visualizer = new LinkedListVisualizer(getActivity());
+                LinkedListControls controls = new LinkedListControls(getActivity(), floatingActionButton);
+                appBarLayout.addView(visualizer);
+                appBarLayout.addView(controls);
+                algorithm = new LinkedList((LinkedListVisualizer) visualizer, getActivity());
+                ((LinkedList) algorithm).setData(util.createLinkedList());
+                controls.setLinkedList((LinkedList) algorithm);
+                break;
 //            case Constants.STACK:
 //                visualizer = new StackVisualizer(getActivity());
 //                StackControls stackcontrols = new StackControls(getActivity(), floatingActionButton);
@@ -201,7 +205,7 @@ public class AlgoFragment extends Fragment {
 
     public void setCodeDesc(final String algoName) {
         title.setText(algoName);
-        explanationText.setText(R.string.text_demo);
+        explanationText.setText(AlgoExplanations.TEXT_DEMO);
     }
 
     public void setCode(String algoName) {

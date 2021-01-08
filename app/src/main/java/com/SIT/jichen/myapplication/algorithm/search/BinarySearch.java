@@ -2,7 +2,7 @@ package com.SIT.jichen.myapplication.algorithm.search;
 
 import android.app.Activity;
 
-import com.SIT.jichen.myapplication.Constants;
+import com.SIT.jichen.myapplication.constants.Constants;
 import com.SIT.jichen.myapplication.algorithm.Algorithm;
 import com.SIT.jichen.myapplication.algorithm.DataHandler;
 import com.SIT.jichen.myapplication.visualization.BinarySearchVisualizer;

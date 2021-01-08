@@ -1,4 +1,4 @@
-package com.SIT.jichen.myapplication.algorithm;
+package com.SIT.jichen.myapplication.constants;
 
 public class AllCodeDemo {
     public static final String CODE_BUBBLE_SORT = "  logArray(\"Original array - \", array);\n" +
