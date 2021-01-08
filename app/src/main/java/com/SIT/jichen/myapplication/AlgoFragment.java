@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 
 import com.SIT.jichen.myapplication.algorithm.*;
 import com.SIT.jichen.myapplication.algorithm.list.LinkedList;
+import com.SIT.jichen.myapplication.algorithm.list.Stack;
 import com.SIT.jichen.myapplication.algorithm.search.BinarySearch;
 import com.SIT.jichen.myapplication.algorithm.search.LinearSearch;
 import com.SIT.jichen.myapplication.constants.AlgoExplanations;
@@ -140,17 +141,18 @@ public class AlgoFragment extends Fragment {
                 algorithm = new LinkedList((LinkedListVisualizer) visualizer, getActivity());
                 ((LinkedList) algorithm).setData(util.createLinkedList());
                 controls.setLinkedList((LinkedList) algorithm);
+                floatingActionButton.setVisibility(View.GONE);
                 break;
-//            case Constants.STACK:
-//                visualizer = new StackVisualizer(getActivity());
-//                StackControls stackcontrols = new StackControls(getActivity(), floatingActionButton);
-//                appBarLayout.addView(visualizer);
-//                appBarLayout.addView(stackcontrols);
-//                algorithm = new Stack(5, (StackVisualizer) visualizer, getActivity());
-//                ((Stack) algorithm).setData(util.createStack());
-//                stackcontrols.setStack((Stack) algorithm);
-//                floatingActionButton.setVisibility(View.GONE);
-//                break;
+            case Constants.STACK:
+                visualizer = new StackVisualizer(getActivity());
+                StackControls stackcontrols = new StackControls(getActivity(), floatingActionButton);
+                appBarLayout.addView(visualizer);
+                appBarLayout.addView(stackcontrols);
+                algorithm = new Stack(5, (StackVisualizer) visualizer, getActivity());
+                ((Stack) algorithm).setData(util.createStack());
+                stackcontrols.setStack((Stack) algorithm);
+                floatingActionButton.setVisibility(View.GONE);
+                break;
 //            case Constants.BFS:
 //            case Constants.DFS:
 //                visualizer = new DirectedGraphVisualizer(getActivity());

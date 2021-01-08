@@ -4,32 +4,29 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        android:paddingBottom="25dp"
-        android:layout_marginLeft="10dp">
+        android:layout_gravity="center_horizontal">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Insert"
+            android:text="Add"
             android:padding="10dp"
             android:id="@+id/llc_add"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:background="@color/light_Blue"
-            android:backgroundTint="@color/light_Blue"
+            android:background="@color/deep_Blue"
             android:minHeight="0dp"
             android:textSize="13sp"
             android:minWidth="0dp"
             android:textColor="@android:color/white"/>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Delete head"
+            android:text="remove"
             android:padding="10dp"
             android:id="@+id/llc_delete_front"
             android:layout_marginLeft="10dp"
@@ -37,10 +34,10 @@
             android:layout_marginRight="10dp"
             android:minHeight="0dp"
             android:textSize="13sp"
-            android:background="@color/light_Blue"
+            android:background="@color/deep_Blue"
             android:textColor="@android:color/white"/>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Traverse"
@@ -51,7 +48,7 @@
             android:layout_marginRight="10dp"
             android:minHeight="0dp"
             android:textSize="13sp"
-            android:background="@color/light_Blue"
+            android:background="@color/deep_Blue"
             android:textColor="@android:color/white"/>
 
 

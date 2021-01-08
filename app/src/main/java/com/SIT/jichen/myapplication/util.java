@@ -3,6 +3,7 @@ package com.SIT.jichen.myapplication;
 import android.content.Context;
 
 import com.SIT.jichen.myapplication.algorithm.list.LinkedList;
+import com.SIT.jichen.myapplication.algorithm.list.Stack;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -63,22 +64,22 @@ public class util {
         return ll;
 
     }
-//
-//    public static Stack createStack() {
-//        Stack stack = new Stack(8);
-//        ArrayList<Integer> a = new ArrayList<>();
-//        for (int i = 10; i <= 13; i++) {
-//            a.add(i);
-//        }
-//        Collections.shuffle(a);
-//
-//        for (int i = 0; i < a.size(); i++) {
-//            stack.push(a.get(i));
-//        }
-//        return stack;
-//
-//    }
-//
+
+    public static Stack createStack() {
+        Stack stack = new Stack(8);
+        ArrayList<Integer> a = new ArrayList<>();
+        for (int i = 10; i <= 13; i++) {
+            a.add(i);
+        }
+        Collections.shuffle(a);
+
+        for (int i = 0; i < a.size(); i++) {
+            stack.push(a.get(i));
+        }
+        return stack;
+
+    }
+
 //    public static Digraph createDirectedGraph() {
 //        Digraph graph = new Digraph();
 //        graph.add(0, 1);
