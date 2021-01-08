@@ -12,6 +12,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.SIT.jichen.myapplication.algorithm.*;
+import com.SIT.jichen.myapplication.algorithm.search.BinarySearch;
+import com.SIT.jichen.myapplication.algorithm.search.LinearSearch;
 import com.SIT.jichen.myapplication.visualization.*;
 import com.SIT.jichen.myapplication.algorithm.sorting.*;
 import com.google.android.material.appbar.AppBarLayout;
