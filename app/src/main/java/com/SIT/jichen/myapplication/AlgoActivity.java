@@ -16,7 +16,7 @@ public class AlgoActivity extends AppCompatActivity {
         this.getSupportActionBar().hide();
 
         Intent intent = getIntent();
-        String algoName = intent.getStringExtra("AlgoName");
+        String algoName = intent.getStringExtra(Constants.ALGO_NAME);
 
         // create a fragment
         AlgoFragment algoFragment = AlgoFragment.getInstance(algoName);

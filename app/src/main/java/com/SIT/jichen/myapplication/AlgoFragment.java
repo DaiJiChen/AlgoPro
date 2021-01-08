@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,7 +27,10 @@ public class AlgoFragment extends Fragment {
     FloatingActionButton floatingActionButton;
     AppBarLayout appBarLayout;
     CodeView codeView;
-
+    TextView title;
+    TextView explanationText;
+    TextView complexityText;
+    TextView referenceText;
 
     Algorithm algorithm;
 
@@ -48,6 +52,10 @@ public class AlgoFragment extends Fragment {
         appBarLayout = (AppBarLayout) rootView.findViewById(R.id.appBarLayout);
         floatingActionButton = (FloatingActionButton) rootView.findViewById(R.id.floatingActionButton);
         codeView = (CodeView) rootView.findViewById(R.id.code_view);
+        title = rootView.findViewById(R.id.explanationTitle);
+        explanationText = rootView.findViewById(R.id.explanationText);
+        complexityText = rootView.findViewById(R.id.complexityText);
+        referenceText = rootView.findViewById(R.id.referenceText);
 
         setupFragment(getArguments().getString(Constants.ALGO_NAME));
 
@@ -58,17 +66,17 @@ public class AlgoFragment extends Fragment {
         this.startCommand = startCommand;
     }
 
-    public void setupFragment(String algorithmKey) {
-        setCode(algorithmKey);
-        setCodeDesc(algorithmKey);
+    public void setupFragment(String algoName) {
+        setCode(algoName);
+        setCodeDesc(algoName);
 
-        assert algorithmKey != null;
+        assert algoName != null;
 
         final AlgoVisualizer visualizer;
 
         floatingActionButton.setVisibility(View.VISIBLE);
 
-        switch (algorithmKey) {
+        switch (algoName) {
             case Constants.BINARY_SEARCH:
                 visualizer = new BinarySearchVisualizer(getActivity());
                 appBarLayout.addView(visualizer);
@@ -191,14 +199,14 @@ public class AlgoFragment extends Fragment {
         });
     }
 
-    public void setCodeDesc(final String algorithmKey) {
-        // get name of algorithm
-        // set text in view
+    public void setCodeDesc(final String algoName) {
+        title.setText(algoName);
+        explanationText.setText(R.string.text_demo);
     }
 
-    public void setCode(String key) {
+    public void setCode(String algoName) {
         if (codeView != null) {
-            switch (key) {
+            switch (algoName) {
                 case Constants.BUBBLE_SORT:
                     addCodeItem(AllCodeDemo.CODE_BUBBLE_SORT);
                     break;

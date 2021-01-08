@@ -9,9 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,42 +36,42 @@ public class MainActivity extends AppCompatActivity {
         if(cardName.getText().equals(Constants.SEARCH)) {
             Log.i("Card Clicked", Constants.SEARCH);
 
-            Intent intent = new Intent(this, OverviewActivity.class);
+            Intent intent = new Intent(this, UnitActivity.class);
             intent.putExtra(Constants.UNIT_NAME, Constants.SEARCH);
             startActivity(intent);
         }
         else if(cardName.getText().equals(Constants.TREE)) {
             Log.i("Card Clicked", Constants.TREE);
 
-            Intent intent = new Intent(this, OverviewActivity.class);
+            Intent intent = new Intent(this, UnitActivity.class);
             intent.putExtra(Constants.UNIT_NAME, Constants.TREE);
             startActivity(intent);
         }
         else if(cardName.getText().equals(Constants.LIST)) {
             Log.i("Card Clicked", Constants.LIST);
 
-            Intent intent = new Intent(this, OverviewActivity.class);
+            Intent intent = new Intent(this, UnitActivity.class);
             intent.putExtra(Constants.UNIT_NAME, Constants.LIST);
             startActivity(intent);
         }
         else if(cardName.getText().equals(Constants.SORTING)) {
             Log.i("Card Clicked", Constants.SORTING);
 
-            Intent intent = new Intent(this, OverviewActivity.class);
+            Intent intent = new Intent(this, UnitActivity.class);
             intent.putExtra(Constants.UNIT_NAME, Constants.SORTING);
             startActivity(intent);
         }
         else if(cardName.getText().equals(Constants.HASHMAP)) {
             Log.i("Card Clicked", Constants.HASHMAP);
 
-            Intent intent = new Intent(this, OverviewActivity.class);
+            Intent intent = new Intent(this, UnitActivity.class);
             intent.putExtra(Constants.UNIT_NAME, Constants.HASHMAP);
             startActivity(intent);
         }
         else if(cardName.getText().equals(Constants.GRAPH)) {
             Log.i("Card Clicked", Constants.GRAPH);
 
-            Intent intent = new Intent(this, OverviewActivity.class);
+            Intent intent = new Intent(this, UnitActivity.class);
             intent.putExtra(Constants.UNIT_NAME, Constants.GRAPH);
             startActivity(intent);
         }

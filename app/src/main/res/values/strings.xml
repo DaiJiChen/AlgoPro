@@ -5,8 +5,7 @@
     <string name="Tree">Tree</string>
     <string name="HashMap">HashMap</string>
     <string name="Graph">Graph</string>bubble_sort
-    <string name="bubble_sort">bubble_sort</string>key_algorithm
-    <string name="algorithm_key">algorithm_key</string>
-    <string name="s">1</string>
+    <string name="algo_name">algo_name</string>
+    <string name="text_demo">"Text\nwill\nshow\up\nhere"</string>
     <string name="a">2</string>
 </resources>
