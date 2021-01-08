@@ -25,8 +25,10 @@ public class Constants {
 
     // Tree
     public static final String TREE = "Tree";
-    public static final String BST_INSERT = "BST Insert";
-    public static final String BST_SEARCH = "BST Search";
+    public static final String BFS = "Breadth-first Search";
+    public static final String DFS = "Depth-first Search";
+    public static final String BST_INSERT = "Binary Search Tree: Insert";
+    public static final String BST_SEARCH = "Binary Search Tree: Search";
 
     // HashMap
     public static final String HASHMAP = "Hashmap";
@@ -39,10 +41,7 @@ public class Constants {
 
     // Graph
     public static final String GRAPH = "Graph";
-    public static final String BFS = "BFS";
-    public static final String DFS = "DFS";
     public static final String DIJKSTRA = "Dijkstra";
-    public static final String N_QUEENS = "N_Queens";
 
     public static final String KEY_INTERVAL = "preference_interval";
 

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
 
 public abstract class AlgoVisualizer extends View {
@@ -21,6 +22,7 @@ public abstract class AlgoVisualizer extends View {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         setMeasuredDimension(getMeasuredWidth(), getDimensionInPixel(200));
+        setForegroundGravity(Gravity.CENTER);
     }
 
     public int getDimensionInPixel(int dp) {

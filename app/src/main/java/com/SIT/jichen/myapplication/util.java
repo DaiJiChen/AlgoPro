@@ -2,8 +2,10 @@ package com.SIT.jichen.myapplication;
 
 import android.content.Context;
 
+import com.SIT.jichen.myapplication.algorithm.graph.Digraph;
 import com.SIT.jichen.myapplication.algorithm.list.LinkedList;
 import com.SIT.jichen.myapplication.algorithm.list.Stack;
+import com.SIT.jichen.myapplication.algorithm.tree.BinarySearchTree;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -46,15 +48,15 @@ public class util {
         return intArray;
     }
 
-//    public static BinarySearchTree createBinaryTree() {
-//        BinarySearchTree b = new BinarySearchTree();
-//        for (int i = 0; i < bst_array.length; i++) {
-//            b.insert(bst_array[i]);
-//        }
-//        return b;
-//
-//    }
-//
+    public static BinarySearchTree createBinaryTree() {
+        BinarySearchTree b = new BinarySearchTree();
+        for (int i = 0; i < bst_array.length; i++) {
+            b.insert(bst_array[i]);
+        }
+        return b;
+
+    }
+
     public static LinkedList createLinkedList() {
         LinkedList ll = new LinkedList();
         int[] array = createUniqueRandomArray(5);
@@ -80,30 +82,26 @@ public class util {
 
     }
 
-//    public static Digraph createDirectedGraph() {
-//        Digraph graph = new Digraph();
-//        graph.add(0, 1);
-//        graph.add(0, 2);
-//        graph.add(1, 3);
-//        graph.add(3, 7);
-//        graph.add(3, 8);
-//        graph.add(1, 4);
-//        graph.add(4, 9);
-//        graph.add(4, 10);
-//        graph.add(2, 5);
-//        graph.add(2, 6);
-//
-//        double[][] array = {
-//                {0, 2, 6, 5, 1, 4, 10, 9, 3, 8, 7}, //nodes
-//                {1, 5, -1, -1, 3, 9, -1, -1, 7, -1, -1},//left child
-//                {2, 6, -1, -1, 4, 10, -1, -1, 8, -1, -1}, //right child
-//                {0, 1.5, 2.5, 1, 1.5, 0.5, 0, 1, 2.5, 2, 3}, //number of left/right nodes from root in horizontal
-//                {0, 1, 2.5, 2.5, 1, 2, 3, 3, 2, 3, 3}, //number of left/right nodes from root in vertical
-//                {-1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1} //is the node left of the root?
-//        };
-//        graph.setDirectedArray(array);
-//        return graph;
-//    }
+    public static Digraph createDirectedGraph() {
+        Digraph graph = new Digraph();
+        graph.add(0, 1);
+        graph.add(0, 2);
+        graph.add(1, 3);
+        graph.add(1, 4);
+        graph.add(2, 5);
+        graph.add(2, 6);
+
+        double[][] array = {
+                {0, 2, 6, 5, 1, 4, 3}, //nodes
+                {1, 5, -1, -1, 3, -1, -1},//left child
+                {2, 6, -1, -1, 4, -1, -1}, //right child
+                {0, 1.5, 2.5, 0.5, 1.5, 0.5, 2.5}, //number of left/right nodes from root in horizontal
+                {0, 1, 2, 2, 1, 2, 2}, //number of left/right nodes from root in vertical
+                {-1, 0, 0, 0, 1, 1, 1} //is the node left of the root?
+        };
+        graph.setDirectedArray(array);
+        return graph;
+    }
 //
 //    public static WeightedGraph createWeightedGraph(int vertex) {
 //
