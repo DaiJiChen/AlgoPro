@@ -3,9 +3,11 @@ package com.SIT.jichen.myapplication;
 import android.content.Context;
 
 import com.SIT.jichen.myapplication.algorithm.graph.Digraph;
+import com.SIT.jichen.myapplication.algorithm.graph.WeightedGraph;
 import com.SIT.jichen.myapplication.algorithm.list.LinkedList;
 import com.SIT.jichen.myapplication.algorithm.list.Stack;
 import com.SIT.jichen.myapplication.algorithm.tree.BinarySearchTree;
+import com.SIT.jichen.myapplication.constants.Constants;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -156,26 +158,26 @@ public class util {
 //        return graph;
 //
 //    }
-//
-//    public static WeightedGraph2 createWeightedGraph2(int size) {
-//        WeightedGraph2 graph = new WeightedGraph2(size);
-//        graph.setLabel(0, 0);
-//        graph.setLabel(1, 1);
-//        graph.setLabel(2, 2);
-//        graph.setLabel(3, 3);
-//        graph.setLabel(4, 4);
-//        graph.addEdge(0, 1, 2);
-//        graph.addEdge(0, 4, 9);
-//        graph.addEdge(1, 2, 8);
-//        graph.addEdge(1, 3, 15);
-//        graph.addEdge(1, 4, 6);
-//        graph.addEdge(2, 3, 1);
-//        graph.addEdge(4, 3, 3);
-//        graph.addEdge(4, 2, 7);
-//        graph.addEdge(3, 4, 3);
-//
-//        return graph;
-//    }
+
+    public static WeightedGraph createWeightedGraph() {
+        WeightedGraph graph = new WeightedGraph(Constants.NUM_VERTEX_IN_WEIGHTED_GRAPH);
+        graph.setLabel(0, 0);
+        graph.setLabel(1, 1);
+        graph.setLabel(2, 2);
+        graph.setLabel(3, 3);
+        graph.setLabel(4, 4);
+        graph.addEdge(0, 1, 2);
+        graph.addEdge(0, 4, 9);
+        graph.addEdge(1, 2, 8);
+        graph.addEdge(1, 3, 15);
+        graph.addEdge(1, 4, 6);
+        graph.addEdge(2, 3, 1);
+        graph.addEdge(4, 3, 3);
+        graph.addEdge(4, 2, 7);
+        graph.addEdge(3, 4, 3);
+
+        return graph;
+    }
 
 
     public static int[] createArray(int size, boolean sorted) {

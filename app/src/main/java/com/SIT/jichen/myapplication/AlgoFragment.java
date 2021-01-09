@@ -1,9 +1,7 @@
 package com.SIT.jichen.myapplication;
 
-import android.app.ActionBar;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -18,7 +16,7 @@ import com.SIT.jichen.myapplication.algorithm.*;
 import com.SIT.jichen.myapplication.algorithm.list.*;
 import com.SIT.jichen.myapplication.algorithm.graph.*;
 import com.SIT.jichen.myapplication.algorithm.search.*;
-import com.SIT.jichen.myapplication.algorithm.tree.BSTAlgorithm;
+import com.SIT.jichen.myapplication.algorithm.tree.*;
 import com.SIT.jichen.myapplication.constants.*;
 import com.SIT.jichen.myapplication.visualization.*;
 import com.SIT.jichen.myapplication.algorithm.sorting.*;
@@ -87,14 +85,16 @@ public class AlgoFragment extends Fragment {
                 visualizer = new BinarySearchVisualizer(getActivity());
                 appBarLayout.addView(visualizer);
                 algorithm = new BinarySearch((BinarySearchVisualizer) visualizer, getActivity());
-                ((BinarySearch) algorithm).setData(util.createArray(7, true));
+                ((BinarySearch) algorithm).setData(util.createArray(Constants.NUM_ITEM_IN_SEARCH, true));
                 break;
             case Constants.LINEAR_SEARCH:
                 visualizer = new BinarySearchVisualizer(getActivity());
                 appBarLayout.addView(visualizer);
                 algorithm = new LinearSearch((BinarySearchVisualizer) visualizer, getActivity());
-                ((LinearSearch) algorithm).setData(util.createArray(7, false));
+                ((LinearSearch) algorithm).setData(util.createArray(Constants.NUM_ITEM_IN_SEARCH, false));
                 break;
+
+
             case Constants.BUBBLE_SORT:
                 visualizer = new SortingVisualizer(getActivity());
                 appBarLayout.addView(visualizer);
@@ -119,6 +119,8 @@ public class AlgoFragment extends Fragment {
                 algorithm = new QuickSort((SortingVisualizer) visualizer, getActivity());
                 ((QuickSort) algorithm).setData(util.createRandomArray(Constants.NUM_ITEM_IN_SORT));
                 break;
+
+
             case Constants.BST_SEARCH:
                 visualizer = new BSTVisualizer(getActivity());
                 appBarLayout.addView(visualizer);
@@ -134,6 +136,8 @@ public class AlgoFragment extends Fragment {
                 ((BSTAlgorithm) algorithm).setArrayVisualizer(arrayVisualizer);
                 ((BSTAlgorithm) algorithm).setData(util.createBinaryTree());
                 break;
+
+
             case Constants.LINKED_LIST:
                 visualizer = new LinkedListVisualizer(getActivity());
                 LinkedListControls controls = new LinkedListControls(getActivity(), floatingActionButton);
@@ -161,12 +165,12 @@ public class AlgoFragment extends Fragment {
                 algorithm = new GraphTraversalAlgorithm((DirectedGraphVisualizer) visualizer, getActivity());
                 ((GraphTraversalAlgorithm) algorithm).setData(util.createDirectedGraph());
                 break;
-//            case Constants.DIJKSTRA:
-//                visualizer = new WeightedGraphVisualizer2(getActivity());
-//                appBarLayout.addView(visualizer);
-//                algorithm = new DijkstraAgorithm((WeightedGraphVisualizer2) visualizer, getActivity());
-//                ((DijkstraAgorithm) algorithm).setData(util.createWeightedGraph2(5));
-//                break;
+            case Constants.DIJKSTRA:
+                visualizer = new WeightedGraphVisualizer(getActivity());
+                appBarLayout.addView(visualizer);
+                algorithm = new DijkstraAgorithm((WeightedGraphVisualizer) visualizer, getActivity());
+                ((DijkstraAgorithm) algorithm).setData(util.createWeightedGraph());
+                break;
             default:
                 visualizer = null;
         }
