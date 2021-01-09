@@ -157,7 +157,7 @@ public class AlgoCode {
             "} ";
 
     public static final String CODE_TREE_BFS =
-            "public List<List<Integer>> levelOrder(TreeNode root) {\n" +
+            "public List<List<Integer>> level_order(TreeNode root) {\n" +
             "    List<List<Integer>> result = new LinkedList<List<Integer>>();\n" +
             "    if(root == null) return result;\n" +
             "        \n" +
@@ -181,13 +181,13 @@ public class AlgoCode {
             "}";
 
     public static final String CODE_TREE_DFS =
-            "public List<Integer> preorderDFS(TreeNode root) {\n" +
+            "public List<Integer> preorder_DFS(TreeNode root) {\n" +
             "    List<Integer> output = new ArrayList<>();\n" +
             "    if(root == null) return output;\n" +
             "        \n" +
             "    output.add(root.val);\n" +
-            "    preorderTraversal(root.left);\n" +
-            "    preorderTraversal(root.right);\n" +
+            "    preorder_DFS(root.left);\n" +
+            "    preorder_DFS(root.right);\n" +
             "            \n" +
             "    return output;\n" +
             "}";
@@ -251,7 +251,7 @@ public class AlgoCode {
 
 
     public static final String CODE_BELLMAN_FORD =
-            "void BellmanFord(Graph graph, int src) { \n" +
+            "void Bellman_Ford(Graph graph, int src) { \n" +
             "    int V = graph.V, E = graph.E; \n" +
             "    int dist[] = new int[V]; \n" +
             "  \n" +
@@ -290,7 +290,7 @@ public class AlgoCode {
             "}";
 
     public static final String CODE_DIJKSTRA =
-            "public static Graph calculateShortestPathFromSource(Graph graph, Node source) {\n" +
+            "public static Graph calculate_shortest_path_from_source(Graph graph, Node source) {\n" +
             "    source.setDistance(0);\n" +
             "\n" +
             "    Set<Node> settledNodes = new HashSet<>();\n" +
@@ -299,14 +299,14 @@ public class AlgoCode {
             "    unsettledNodes.add(source);\n" +
             "\n" +
             "    while (unsettledNodes.size() != 0) {\n" +
-            "        Node currentNode = getLowestDistanceNode(unsettledNodes);\n" +
+            "        Node currentNode = get_lowest_distance_node(unsettledNodes);\n" +
             "        unsettledNodes.remove(currentNode);\n" +
             "        for (Entry < Node, Integer> adjacencyPair: \n" +
             "          currentNode.getAdjacentNodes().entrySet()) {\n" +
             "            Node adjacentNode = adjacencyPair.getKey();\n" +
             "            Integer edgeWeight = adjacencyPair.getValue();\n" +
             "            if (!settledNodes.contains(adjacentNode)) {\n" +
-            "                calculateMinimumDistance(adjacentNode, edgeWeight, currentNode);\n" +
+            "                calculate_minimum_distance(adjacentNode, edgeWeight, currentNode);\n" +
             "                unsettledNodes.add(adjacentNode);\n" +
             "            }\n" +
             "        }\n" +
@@ -315,7 +315,7 @@ public class AlgoCode {
             "    return graph;\n" +
             "}\n" +
             "\n\n" +
-            "private static Node getLowestDistanceNode(Set < Node > unsettledNodes) {\n" +
+            "private static Node get_lowest_distance_node(Set < Node > unsettledNodes) {\n" +
             "    Node lowestDistanceNode = null;\n" +
             "    int lowestDistance = Integer.MAX_VALUE;\n" +
             "    for (Node node: unsettledNodes) {\n" +
@@ -328,7 +328,7 @@ public class AlgoCode {
             "    return lowestDistanceNode;\n" +
             "}\n" +
             "\n\n" +
-            "private static void CalculateMinimumDistance(Node evaluationNode,\n" +
+            "private static void calculate_minimum_distance(Node evaluationNode,\n" +
             "  Integer edgeWeigh, Node sourceNode) {\n" +
             "    Integer sourceDistance = sourceNode.getDistance();\n" +
             "    if (sourceDistance + edgeWeigh < evaluationNode.getDistance()) {\n" +
