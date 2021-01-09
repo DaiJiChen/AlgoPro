@@ -3,6 +3,7 @@
     <string name="Search">Search</string>
     <string name="Sorting">Sorting</string>
     <string name="Tree">Tree</string>
+    <string name="List">List</string>
     <string name="HashMap">HashMap</string>
     <string name="Graph">Graph</string>bubble_sort
     <string name="algo_name">algo_name</string>

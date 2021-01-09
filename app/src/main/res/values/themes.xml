@@ -31,9 +31,7 @@
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">1dp</item>
         <item name="android:background">@color/card_grid</item>
-        <item name="android:layout_marginLeft">5dp</item>
-        <item name="android:layout_marginRight">10dp</item>
         <item name="android:layout_marginTop">4dp</item>
-        <item name="android:layout_marginBottom">6dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
     </style>
 </resources>

@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
 
+import com.SIT.jichen.myapplication.constants.Constants;
 import com.SIT.jichen.myapplication.visualization.AlgoCompletionListener;
 
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -21,7 +22,7 @@ public class Algorithm extends HandlerThread {
 
     private Handler workerHandler;
 
-    private static int INTERVAL = 500;
+    private static int INTERVAL = Constants.TIME_INTERVAL_BETWEEN_STEPS;
 
     public Algorithm() {
         super("");

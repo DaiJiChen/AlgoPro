@@ -7,6 +7,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,7 +34,6 @@ public class AlgoFragment extends Fragment {
     TextView title;
     TextView explanationText;
     TextView complexityText;
-    TextView referenceText;
 
     Algorithm algorithm;
 
@@ -58,7 +58,6 @@ public class AlgoFragment extends Fragment {
         title = rootView.findViewById(R.id.explanationTitle);
         explanationText = rootView.findViewById(R.id.explanationText);
         complexityText = rootView.findViewById(R.id.complexityText);
-        referenceText = rootView.findViewById(R.id.referenceText);
 
         setupFragment(getArguments().getString(Constants.ALGO_NAME));
 
@@ -70,28 +69,24 @@ public class AlgoFragment extends Fragment {
     }
 
     public void setupFragment(String algoName) {
-        setCode(algoName);
-        setCodeDesc(algoName);
-
         assert algoName != null;
 
         final AlgoVisualizer visualizer;
-
-
+        
         floatingActionButton.setVisibility(View.VISIBLE);
 
         switch (algoName) {
-            case Constants.BINARY_SEARCH:
-                visualizer = new BinarySearchVisualizer(getActivity());
-                appBarLayout.addView(visualizer);
-                algorithm = new BinarySearch((BinarySearchVisualizer) visualizer, getActivity());
-                ((BinarySearch) algorithm).setData(util.createArray(Constants.NUM_ITEM_IN_SEARCH, true));
-                break;
             case Constants.LINEAR_SEARCH:
                 visualizer = new BinarySearchVisualizer(getActivity());
                 appBarLayout.addView(visualizer);
                 algorithm = new LinearSearch((BinarySearchVisualizer) visualizer, getActivity());
                 ((LinearSearch) algorithm).setData(util.createArray(Constants.NUM_ITEM_IN_SEARCH, false));
+                break;
+            case Constants.BINARY_SEARCH:
+                visualizer = new BinarySearchVisualizer(getActivity());
+                appBarLayout.addView(visualizer);
+                algorithm = new BinarySearch((BinarySearchVisualizer) visualizer, getActivity());
+                ((BinarySearch) algorithm).setData(util.createArray(Constants.NUM_ITEM_IN_SEARCH, true));
                 break;
 
 
@@ -171,6 +166,12 @@ public class AlgoFragment extends Fragment {
                 algorithm = new DijkstraAgorithm((WeightedGraphVisualizer) visualizer, getActivity());
                 ((DijkstraAgorithm) algorithm).setData(util.createWeightedGraph());
                 break;
+            case Constants.BELLMAN_FORD:
+                visualizer = new WeightedGraphVisualizer2(getActivity());
+                appBarLayout.addView(visualizer);
+                algorithm = new BellmanFordAlgorithm((WeightedGraphVisualizer2) visualizer, getActivity());
+                ((BellmanFordAlgorithm) algorithm).setData(util.createWeightedGraph2());
+                break;
             default:
                 visualizer = null;
         }
@@ -207,69 +208,111 @@ public class AlgoFragment extends Fragment {
                 }
             }
         });
+
+        setText(algoName);
     }
 
-    public void setCodeDesc(final String algoName) {
+    public void setText(final String algoName) {
         title.setText(algoName);
-        explanationText.setText(AlgoExplanations.TEXT_DEMO);
-    }
 
-    public void setCode(String algoName) {
-        if (codeView != null) {
-            switch (algoName) {
-                case Constants.BUBBLE_SORT:
-                    addCodeItem(AllCodeDemo.CODE_BUBBLE_SORT);
-                    break;
-                case Constants.INSERTION_SORT:
-                    addCodeItem(AllCodeDemo.CODE_INSERTION_SORT);
-                    break;
-                case Constants.SELECTION_SORT:
-                    addCodeItem(AllCodeDemo.CODE_SELECTION_SORT);
-                    break;
-                case Constants.QUICK_SORT:
-                    addCodeItem(AllCodeDemo.CODE_QUICKSORT);
-                    break;
-                case Constants.BST_SEARCH:
-                    addCodeItem(AllCodeDemo.CODE_BST_SEARCH);
-                    break;
-                case Constants.LINEAR_SEARCH:
-                    addCodeItem(AllCodeDemo.CODE_LINEAR_SEARCH);
-                    break;
-                case Constants.BST_INSERT:
-                    addCodeItem(AllCodeDemo.CODE_BST_INSERT);
-                    break;
-                case Constants.BINARY_SEARCH:
-                    addCodeItem(AllCodeDemo.CODE_BINARY_SEARCH);
-                    break;
-                case Constants.LINKED_LIST:
-                    addCodeItem(AllCodeDemo.CODE_LINKED_LIST_INSERT);
-                    addCodeItem(AllCodeDemo.CODE_LINKED_LIST_DELETE);
-                    break;
-                case Constants.STACK:
-                    addCodeItem(AllCodeDemo.CODE_STACK_PUSH);
-                    addCodeItem(AllCodeDemo.CODE_STACK_POP);
-                    addCodeItem(AllCodeDemo.CODE_STACK_PEEK);
-                    break;
-                case Constants.BFS:
-                    addCodeItem(AllCodeDemo.CODE_GRAPH_BFS);
-                    break;
-                case Constants.DFS:
-                    addCodeItem(AllCodeDemo.CODE_GRAPH_DFS);
-                    break;
-                case Constants.DIJKSTRA:
-                    addCodeItem(AllCodeDemo.CODE_DIJKSTRA);
-                    break;
-            }
+        if(explanationText == null || complexityText == null) {
+            explanationText.setText(AlgoText.TEXT_DEMO);
+            complexityText.setText(AlgoText.TEXT_DEMO);
+            return;
         }
 
+        switch (algoName) {
+            case Constants.BUBBLE_SORT:
+                explanationText.setText(AlgoText.TEXT_DEMO);
+                complexityText.setText(AlgoText.TEXT_DEMO);
+                addCodeDemo(AlgoCode.CODE_BUBBLE_SORT);
+                break;
+            case Constants.INSERTION_SORT:
+                explanationText.setText(AlgoText.TEXT_DEMO);
+                complexityText.setText(AlgoText.TEXT_DEMO);
+                addCodeDemo(AlgoCode.CODE_INSERTION_SORT);
+                break;
+            case Constants.SELECTION_SORT:
+                explanationText.setText(AlgoText.TEXT_DEMO);
+                complexityText.setText(AlgoText.TEXT_DEMO);
+                addCodeDemo(AlgoCode.CODE_SELECTION_SORT);
+                break;
+            case Constants.QUICK_SORT:
+                explanationText.setText(AlgoText.TEXT_DEMO);
+                complexityText.setText(AlgoText.TEXT_DEMO);
+                addCodeDemo(AlgoCode.CODE_QUICK_SORT);
+                break;
+                
+                
+            case Constants.LINEAR_SEARCH:
+                explanationText.setText(AlgoText.EXP_LINEAR_SEARCH);
+                complexityText.setText(AlgoText.COMPL_LINEAR_SEARCH);
+                addCodeDemo(AlgoCode.CODE_LINEAR_SEARCH);
+                break;
+            case Constants.BINARY_SEARCH:
+                explanationText.setText(AlgoText.EXP_BINARY_SEARCH);
+                complexityText.setText(AlgoText.COMPL_BINARY_SEARCH);
+                addCodeDemo(AlgoCode.CODE_BINARY_SEARCH);
+                break;
+                
+                
+            case Constants.BST_SEARCH:
+                explanationText.setText(AlgoText.TEXT_DEMO);
+                complexityText.setText(AlgoText.TEXT_DEMO);
+                addCodeDemo(AlgoCode.CODE_BST_SEARCH);
+                break;
+            case Constants.BST_INSERT:
+                explanationText.setText(AlgoText.TEXT_DEMO);
+                complexityText.setText(AlgoText.TEXT_DEMO);
+                addCodeDemo(AlgoCode.CODE_BST_INSERT);
+                break;
+            case Constants.BFS:
+                explanationText.setText(AlgoText.TEXT_DEMO);
+                complexityText.setText(AlgoText.TEXT_DEMO);
+                addCodeDemo(AlgoCode.CODE_TREE_BFS);
+                break;
+            case Constants.DFS:
+                explanationText.setText(AlgoText.TEXT_DEMO);
+                complexityText.setText(AlgoText.TEXT_DEMO);
+                addCodeDemo(AlgoCode.CODE_TREE_DFS);
+                break;
+                
+                
+            case Constants.LINKED_LIST:
+                explanationText.setText(AlgoText.TEXT_DEMO);
+                complexityText.setText(AlgoText.TEXT_DEMO);
+                addCodeDemo(AlgoCode.CODE_LINKED_LIST);
+                break;
+            case Constants.STACK:
+                explanationText.setText(AlgoText.TEXT_DEMO);
+                complexityText.setText(AlgoText.TEXT_DEMO);
+                addCodeDemo(AlgoCode.CODE_STACK);
+                break;
+                
+                
+            case Constants.DIJKSTRA:
+                explanationText.setText(AlgoText.TEXT_DEMO);
+                complexityText.setText(AlgoText.TEXT_DEMO);
+                addCodeDemo(AlgoCode.CODE_DIJKSTRA);
+                break;
+            case Constants.BELLMAN_FORD:
+                explanationText.setText(AlgoText.TEXT_DEMO);
+                complexityText.setText(AlgoText.TEXT_DEMO);
+                addCodeDemo((AlgoCode.CODE_BELLMAN_FORD));
+                break;
+
+            default:
+                Toast.makeText(getActivity(), "Unknown algoName while inflate text", Toast.LENGTH_SHORT).show();
+        }
     }
 
-    private void addCodeItem(String code) {
+    private void addCodeDemo(String code) {
         codeView.setTheme(CodeViewTheme.GITHUB);
         codeView.setHorizontalScrollBarEnabled(true);
         codeView.setOnTouchListener(new HorizontalMoveListener());
         codeView.showCode(code);
     }
+
 
     class HorizontalMoveListener implements View.OnTouchListener {
 

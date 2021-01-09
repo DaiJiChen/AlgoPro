@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.SIT.jichen.myapplication.algorithm.graph.Digraph;
 import com.SIT.jichen.myapplication.algorithm.graph.WeightedGraph;
+import com.SIT.jichen.myapplication.algorithm.graph.WeightedGraph2;
 import com.SIT.jichen.myapplication.algorithm.list.LinkedList;
 import com.SIT.jichen.myapplication.algorithm.list.Stack;
 import com.SIT.jichen.myapplication.algorithm.tree.BinarySearchTree;
@@ -31,7 +32,7 @@ public class util {
 
         int[] integers = new int[size];
         for (int i = 0; i < size; i++) {
-            integers[i] = new Random().nextInt(8) + 1;
+            integers[i] = new Random().nextInt(9) + 1;
         }
         return integers;
     }
@@ -104,63 +105,63 @@ public class util {
         graph.setDirectedArray(array);
         return graph;
     }
-//
-//    public static WeightedGraph createWeightedGraph(int vertex) {
-//
-//        int E = 8;
-//
-//        WeightedGraph graph = new WeightedGraph(vertex, E);
-//
-//        switch (new Random().nextInt(3)) {
-//            case 0:
-//                graph.addEdge(0, 0, 1, 1);
-//                graph.addEdge(1, 0, 2, 4);
-//                graph.addEdge(2, 1, 2, 7);
-//                graph.addEdge(3, 1, 3, 9);
-//                graph.addEdge(4, 1, 4, 2);
-//                graph.addEdge(5, 3, 2, 15);
-//                graph.addEdge(6, 0, 4, 4);
-//                graph.addEdge(7, 4, 3, 3);
-//                break;
-//            case 1:
-//                graph.addEdge(0, 0, 3, 1);
-//                graph.addEdge(1, 0, 2, 4);
-//                graph.addEdge(2, 1, 3, 9);
-//                graph.addEdge(3, 1, 2, 2);
-//                graph.addEdge(4, 1, 4, 7);
-//                graph.addEdge(5, 2, 3, 5);
-//                graph.addEdge(6, 3, 4, 12);
-//                graph.addEdge(7, 4, 2, 3);
-//                break;
-//            case 2:
-//                graph.addEdge(0, 4, 3, 1);
-//                graph.addEdge(1, 4, 0, 4);
-//                graph.addEdge(2, 0, 3, 8);
-//                graph.addEdge(3, 0, 1, 2);
-//                graph.addEdge(4, 0, 2, 14);
-//                graph.addEdge(5, 2, 1, 5);
-//                graph.addEdge(6, 2, 4, 6);
-//                graph.addEdge(7, 1, 3, 3);
-//                break;
-//            case 3:
-//                graph.addEdge(0, 0, 1, 1);
-//                graph.addEdge(1, 0, 3, 4);
-//                graph.addEdge(2, 0, 4, 7);
-//                graph.addEdge(3, 4, 3, 8);
-//                graph.addEdge(4, 3, 2, 2);
-//                graph.addEdge(5, 4, 2, 9);
-//                graph.addEdge(6, 1, 4, 3);
-//                graph.addEdge(7, 2, 1, 2);
-//                break;
-//        }
-//
-//
-//        return graph;
-//
-//    }
+
+    public static WeightedGraph2 createWeightedGraph2() {
+        int vertex = Constants.NUM_VERTEX_IN_GRAPH;
+        int E = 8;
+
+        WeightedGraph2 graph = new WeightedGraph2(vertex, E);
+
+        switch (new Random().nextInt(3)) {
+            case 0:
+                graph.addEdge(0, 0, 1, 1);
+                graph.addEdge(1, 0, 2, 4);
+                graph.addEdge(2, 1, 2, 7);
+                graph.addEdge(3, 1, 3, 9);
+                graph.addEdge(4, 1, 4, 2);
+                graph.addEdge(5, 3, 2, 15);
+                graph.addEdge(6, 0, 4, 4);
+                graph.addEdge(7, 4, 3, 3);
+                break;
+            case 1:
+                graph.addEdge(0, 0, 3, 1);
+                graph.addEdge(1, 0, 2, 4);
+                graph.addEdge(2, 1, 3, 9);
+                graph.addEdge(3, 1, 2, 2);
+                graph.addEdge(4, 1, 4, 7);
+                graph.addEdge(5, 2, 3, 5);
+                graph.addEdge(6, 3, 4, 12);
+                graph.addEdge(7, 4, 2, 3);
+                break;
+            case 2:
+                graph.addEdge(0, 4, 3, 1);
+                graph.addEdge(1, 4, 0, 4);
+                graph.addEdge(2, 0, 3, 8);
+                graph.addEdge(3, 0, 1, 2);
+                graph.addEdge(4, 0, 2, 14);
+                graph.addEdge(5, 2, 1, 5);
+                graph.addEdge(6, 2, 4, 6);
+                graph.addEdge(7, 1, 3, 3);
+                break;
+            case 3:
+                graph.addEdge(0, 0, 1, 1);
+                graph.addEdge(1, 0, 3, 4);
+                graph.addEdge(2, 0, 4, 7);
+                graph.addEdge(3, 4, 3, 8);
+                graph.addEdge(4, 3, 2, 2);
+                graph.addEdge(5, 4, 2, 9);
+                graph.addEdge(6, 1, 4, 3);
+                graph.addEdge(7, 2, 1, 2);
+                break;
+        }
+
+
+        return graph;
+
+    }
 
     public static WeightedGraph createWeightedGraph() {
-        WeightedGraph graph = new WeightedGraph(Constants.NUM_VERTEX_IN_WEIGHTED_GRAPH);
+        WeightedGraph graph = new WeightedGraph(Constants.NUM_VERTEX_IN_GRAPH);
         graph.setLabel(0, 0);
         graph.setLabel(1, 1);
         graph.setLabel(2, 2);

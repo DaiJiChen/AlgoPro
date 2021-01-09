@@ -20,10 +20,10 @@ public class MainActivity extends AppCompatActivity {
     public void addAllTopics() {
         String[] SearchAlgos = {Constants.LINEAR_SEARCH, Constants.BINARY_SEARCH};
         String[] TreeAlgos = {Constants.BFS, Constants.DFS, Constants.BST_INSERT, Constants.BST_SEARCH};
-        String[] ListAlgos = {Constants.LINKED_LIST, Constants.STACK, Constants.QUEUE};
+        String[] ListAlgos = {Constants.LINKED_LIST, Constants.STACK};
         String[] SortingAlgos = {Constants.BUBBLE_SORT, Constants.SELECTION_SORT, Constants.INSERTION_SORT, Constants.QUICK_SORT};
-        String[] HashMapAlgos = {"A", "B"};
-        String[] GraphAlgos = {Constants.DIJKSTRA};
+        String[] HashMapAlgos = {Constants.MORE_IS_COMING};
+        String[] GraphAlgos = {Constants.DIJKSTRA, Constants.BELLMAN_FORD};
 
         allTopics.put(Constants.SEARCH, SearchAlgos);
         allTopics.put(Constants.TREE, TreeAlgos);
