@@ -7,21 +7,25 @@ import android.graphics.Paint;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 
-import com.SIT.jichen.myapplication.visualization.AlgoVisualizer;
+import androidx.core.content.ContextCompat;
+
+import com.SIT.jichen.myapplication.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class BinarySearchVisualizer extends AlgoVisualizer {
 
-    Paint paint;
-    Paint highlightPaint; //blue paint
-    Paint highlightPaintTrace; //red paint
+    Paint paint; // green
+    Paint highlightPaint; //light_blue
+    Paint highlightTrace; //deep_blue
+    Paint highlightTarget; //red
     Paint textPaint;
 
     int[] array;
     List<Integer> highlightPositions = new ArrayList<>();
-    int highlightPositionTrace = -1;
+    int tracePosition = -1;
+    int targetPosition = -1;
 
     int lineStrokeWidth = getDimensionInPixel(10);
 
@@ -38,15 +42,18 @@ public class BinarySearchVisualizer extends AlgoVisualizer {
 
     private void initialise() {
         paint = new Paint();
-        paint.setColor(Color.parseColor("#009688"));
+        paint.setColor(ContextCompat.getColor(getContext(), R.color.green));
         paint.setStyle(Paint.Style.FILL);
         paint.setStrokeWidth(lineStrokeWidth);
 
         highlightPaint = new Paint(paint);
-        highlightPaint.setColor(Color.BLUE);
+        highlightPaint.setColor(ContextCompat.getColor(getContext(), R.color.light_Blue));
 
-        highlightPaintTrace = new Paint(paint);
-        highlightPaintTrace.setColor(Color.RED);
+        highlightTrace = new Paint(paint);
+        highlightTrace.setColor(ContextCompat.getColor(getContext(), R.color.deep_Blue));
+
+        highlightTarget = new Paint(paint);
+        highlightTarget.setColor(ContextCompat.getColor(getContext(), R.color.red));
 
         textPaint = new TextPaint();
         textPaint.setColor(Color.BLACK);
@@ -63,16 +70,20 @@ public class BinarySearchVisualizer extends AlgoVisualizer {
 
             float xPos = margin + getDimensionInPixel(10);
             for (int i = 0; i < array.length; i++) {
-
                 if (highlightPositions.contains(i)) {
-                    if (highlightPositionTrace != -1 && highlightPositionTrace == i) {
-                        canvas.drawLine(xPos, getHeight() - (float) ((array[i] / 110.0) * getHeight()), xPos, getHeight(), highlightPaintTrace);
-                    } else
+                    if (tracePosition != -1 && tracePosition == i)
+                        canvas.drawLine(xPos, getHeight() - (float) ((array[i] / 110.0) * getHeight()), xPos, getHeight(), highlightTrace);
+                    else if (targetPosition != -1 && targetPosition == i)
+                        canvas.drawLine(xPos, getHeight() - (float) ((array[i] / 110.0) * getHeight()), xPos, getHeight(), highlightTarget);
+                    else
                         canvas.drawLine(xPos, getHeight() - (float) ((array[i] / 110.0) * getHeight()), xPos, getHeight(), highlightPaint);
-                } else {
-                    if (highlightPositionTrace != -1 && highlightPositionTrace == i) {
-                        canvas.drawLine(xPos, getHeight() - (float) ((array[i] / 110.0) * getHeight()), xPos, getHeight(), highlightPaintTrace);
-                    } else
+                }
+                else {
+                    if (tracePosition != -1 && tracePosition == i)
+                        canvas.drawLine(xPos, getHeight() - (float) ((array[i] / 110.0) * getHeight()), xPos, getHeight(), highlightTrace);
+                    else if (targetPosition != -1 && targetPosition == i)
+                        canvas.drawLine(xPos, getHeight() - (float) ((array[i] / 110.0) * getHeight()), xPos, getHeight(), highlightTarget);
+                    else
                         canvas.drawLine(xPos, getHeight() - (float) ((array[i] / 110.0) * getHeight()), xPos, getHeight(), paint);
                 }
 
@@ -81,7 +92,7 @@ public class BinarySearchVisualizer extends AlgoVisualizer {
                 xPos += margin + 30;
             }
             highlightPositions.clear();
-            highlightPositionTrace = -1;
+            tracePosition = -1;
         }
 
 
@@ -99,7 +110,12 @@ public class BinarySearchVisualizer extends AlgoVisualizer {
     }
 
     public void highlightTrace(int pos) {
-        this.highlightPositionTrace = pos;
+        this.tracePosition = pos;
+        invalidate();
+    }
+
+    public void highlightTarget(int pos) {
+        this.targetPosition = pos;
         invalidate();
     }
 

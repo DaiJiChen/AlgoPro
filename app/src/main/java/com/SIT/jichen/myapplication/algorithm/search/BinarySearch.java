@@ -36,31 +36,33 @@ public class BinarySearch extends Algorithm implements DataHandler {
     }
 
     private void search() {
-        int rnd = new Random().nextInt(array.length);
-        int data = array[rnd];
+        int targetPos = new Random().nextInt(array.length);
+        int target = array[targetPos];
 
         int low = 0;
         int high = array.length - 1;
 
         highlight(low, high);
         highlightTrace((int) (low + high) / 2);
+        highlightTarget(targetPos);
         sleep();
 
         while (high >= low) {
 
             int middle = (int) (low + high) / 2;
             highlightTrace(middle);
+            highlightTarget(targetPos);
             sleep();
 
-            if (array[middle] == data) {
+            if (array[middle] == target) {
                 break;
             }
-            if (array[middle] < data) {
+            if (array[middle] < target) {
                 low = middle + 1;
                 highlight(low, high);
                 sleep();
             }
-            if (array[middle] > data) {
+            if (array[middle] > target) {
                 high = middle - 1;
                 highlight(low, high);
                 sleepFor(800);
@@ -88,6 +90,15 @@ public class BinarySearch extends Algorithm implements DataHandler {
             @Override
             public void run() {
                 visualizer.highlightTrace(pos);
+            }
+        });
+    }
+
+    private void highlightTarget(final int pos) {
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                visualizer.highlightTarget(pos);
             }
         });
     }

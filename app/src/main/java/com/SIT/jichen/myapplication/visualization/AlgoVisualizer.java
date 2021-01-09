@@ -7,6 +7,8 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 
+import com.SIT.jichen.myapplication.constants.Constants;
+
 public abstract class AlgoVisualizer extends View {
 
     public AlgoVisualizer(Context context) {
@@ -21,8 +23,7 @@ public abstract class AlgoVisualizer extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        setMeasuredDimension(getMeasuredWidth(), getDimensionInPixel(200));
-        setForegroundGravity(Gravity.CENTER);
+        setMeasuredDimension(getMeasuredWidth(), getDimensionInPixel(Constants.VISUALIZATION_WINDOW_HEIGHT));
     }
 
     public int getDimensionInPixel(int dp) {

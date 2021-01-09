@@ -35,7 +35,7 @@ public class SortingVisualizer extends AlgoVisualizer {
 
     private void initialise() {
         paint = new Paint();
-        paint.setColor(ContextCompat.getColor(getContext(), R.color.medium_Blue));
+        paint.setColor(ContextCompat.getColor(getContext(), R.color.green));
         paint.setStyle(Paint.Style.FILL);
         paint.setStrokeWidth(lineStrokeWidth);
 

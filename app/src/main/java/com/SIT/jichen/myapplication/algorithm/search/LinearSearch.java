@@ -38,15 +38,15 @@ public class LinearSearch extends Algorithm implements DataHandler {
 
     private void search() {
 
-        int rnd = new Random().nextInt(array.length);
-        int data = array[rnd];
+        int targetPos = new Random().nextInt(array.length);
 
         int n = array.length ;
 
         for (int i = 0 ; i<n ; i++) {
             highlight(0, i-1);
+            highlightTarget(targetPos);
             highlightTrace(i);
-            if (array[i] == data){
+            if (i == targetPos){
                 break;
             }
             sleep();
@@ -75,6 +75,15 @@ public class LinearSearch extends Algorithm implements DataHandler {
             @Override
             public void run() {
                 visualizer.highlightTrace(pos);
+            }
+        });
+    }
+
+    private void highlightTarget(final int pos) {
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                visualizer.highlightTarget(pos);
             }
         });
     }
