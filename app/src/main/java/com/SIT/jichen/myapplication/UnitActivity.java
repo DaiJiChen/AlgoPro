@@ -8,10 +8,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.SIT.jichen.myapplication.constants.Constants;
 
 import java.util.ArrayList;
+
+import static com.SIT.jichen.myapplication.util.algoExist;
 
 public class UnitActivity extends AppCompatActivity {
 
@@ -41,9 +44,14 @@ public class UnitActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.i("algo item clicked", algoNames[i]);
 
-                Intent intent = new Intent(getApplicationContext(), AlgoActivity.class);
-                intent.putExtra(Constants.ALGO_NAME, algoNames[i]);
-                startActivity(intent);
+                if(algoExist(algoNames[i])) {
+                    Intent intent = new Intent(getApplicationContext(), AlgoActivity.class);
+                    intent.putExtra(Constants.ALGO_NAME, algoNames[i]);
+                    startActivity(intent);
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "More is coming", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

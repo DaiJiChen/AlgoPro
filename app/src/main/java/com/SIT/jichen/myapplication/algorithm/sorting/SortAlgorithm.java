@@ -38,6 +38,15 @@ public class SortAlgorithm extends Algorithm implements DataHandler {
         });
     }
 
+    public void highlightFound(final int position) {
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                visualizer.highlightFound(position);
+            }
+        });
+    }
+
     @Override
     public void onDataRecieved(Object data) {
 

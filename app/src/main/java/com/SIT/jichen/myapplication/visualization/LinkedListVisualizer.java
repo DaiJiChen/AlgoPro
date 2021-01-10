@@ -8,12 +8,15 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 
-import com.SIT.jichen.myapplication.algorithm.list.LinkedList;
+import androidx.core.content.ContextCompat;
+
+import com.SIT.jichen.myapplication.R;
+import com.SIT.jichen.myapplication.algorithm.list.myLinkedList;
 
 public class LinkedListVisualizer extends AlgoVisualizer {
 
     int[] array;
-    LinkedList linkedList;
+    myLinkedList myLinkedList;
 
     private Paint textPaint;
     private Paint circlePaint;
@@ -34,9 +37,9 @@ public class LinkedListVisualizer extends AlgoVisualizer {
         initialise();
     }
 
-    public void setData(LinkedList ll) {
-        this.linkedList = ll;
-        this.array = linkedList.getArray();
+    public void setData(myLinkedList ll) {
+        this.myLinkedList = ll;
+        this.array = myLinkedList.getArray();
         invalidate();
     }
 
@@ -54,7 +57,7 @@ public class LinkedListVisualizer extends AlgoVisualizer {
         bounds = new Rect();
         textPaint.getTextBounds("0", 0, 1, bounds);
 
-        circlePaint.setColor(Color.RED);
+        circlePaint.setColor(ContextCompat.getColor(getContext(), R.color.green));
         circlePaint.setAntiAlias(true);
 
         linePaint = new Paint();
@@ -62,7 +65,7 @@ public class LinkedListVisualizer extends AlgoVisualizer {
         linePaint.setColor(Color.BLACK);
 
         circleHighlightPaint = new Paint(circlePaint);
-        circleHighlightPaint.setColor(Color.BLUE);
+        circleHighlightPaint.setColor(ContextCompat.getColor(getContext(), R.color.red));
 
         lineHighlightPaint = new Paint(linePaint);
         lineHighlightPaint.setColor(Color.RED);

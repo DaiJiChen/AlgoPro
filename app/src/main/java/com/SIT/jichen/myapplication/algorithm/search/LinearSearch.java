@@ -5,7 +5,7 @@ import android.app.Activity;
 import com.SIT.jichen.myapplication.constants.Constants;
 import com.SIT.jichen.myapplication.algorithm.Algorithm;
 import com.SIT.jichen.myapplication.algorithm.DataHandler;
-import com.SIT.jichen.myapplication.visualization.BinarySearchVisualizer;
+import com.SIT.jichen.myapplication.visualization.SearchVisualizer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,12 +14,12 @@ import java.util.Random;
 
 public class LinearSearch extends Algorithm implements DataHandler {
 
-    private BinarySearchVisualizer visualizer;
+    private SearchVisualizer visualizer;
     private int[] array;
 
     private List<Integer> positions = new ArrayList<>();
 
-    public LinearSearch(BinarySearchVisualizer visualizer, Activity activity) {
+    public LinearSearch(SearchVisualizer visualizer, Activity activity) {
         this.visualizer = visualizer;
         this.activity = activity;
     }

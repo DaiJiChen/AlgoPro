@@ -34,7 +34,8 @@ public class QuickSort extends SortAlgorithm {
         int i = lowerIndex;
         int j = higherIndex;
         int pivot = array[lowerIndex + (higherIndex - lowerIndex) / 2];
-        highlightTrace(pivot);
+        highlightFound(pivot);
+        sleep();
 
         while (i <= j) {
             while (array[i] < pivot) {
@@ -46,6 +47,7 @@ public class QuickSort extends SortAlgorithm {
             if (i <= j) {
                 swap(i, j);
                 highlightSwap(i, j);
+                sleep();
                 i++;
                 j--;
             }

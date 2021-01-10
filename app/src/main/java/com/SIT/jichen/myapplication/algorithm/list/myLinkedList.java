@@ -9,34 +9,36 @@ import com.SIT.jichen.myapplication.util;
 import com.SIT.jichen.myapplication.visualization.LinkedListVisualizer;
 
 
-public class LinkedList extends Algorithm implements DataHandler {
+public class myLinkedList extends Algorithm implements DataHandler {
 
-    public static final String ADD = "add";
-    public static final String ADD_AFTER = "add_after";
+    public static final String ADD_FRONT = "_front";
+    public static final String ADD_END = "add_end";
     public static final String DELETE_FRONT = "delete_front";
     public static final String DELETE_AFTER = "delete_after";
     public static final String TRAVERSE = "traverse";
 
     private LinkedListVisualizer visualizer;
-    private LinkedList linkedList;
+    private myLinkedList myLinkedList;
+
+    int currMax = Constants.NUM_NODES_IN_LINKEDLIST + 1;
 
     private Node head;
     private Node tail;
 
-    public LinkedList() {
+    public myLinkedList() {
 
     }
 
-    public LinkedList(LinkedListVisualizer visualizer, Activity activity) {
+    public myLinkedList(LinkedListVisualizer visualizer, Activity activity) {
         this.visualizer = visualizer;
         this.activity = activity;
     }
 
-    //LinkedList implementation
+    //myLinkedList implementation
     private class Node {
 
         private int value;
-        private Node nextRef;
+        private Node next;
 
         public int getValue() {
             return value;
@@ -46,12 +48,12 @@ public class LinkedList extends Algorithm implements DataHandler {
             this.value = value;
         }
 
-        public Node getNextRef() {
-            return nextRef;
+        public Node getNext() {
+            return next;
         }
 
-        public void setNextRef(Node ref) {
-            this.nextRef = ref;
+        public void setNext(Node next) {
+            this.next = next;
         }
     }
 
@@ -64,7 +66,7 @@ public class LinkedList extends Algorithm implements DataHandler {
                 break;
             }
             size++;
-            tmp = tmp.getNextRef();
+            tmp = tmp.getNext();
         }
         return size;
     }
@@ -78,7 +80,7 @@ public class LinkedList extends Algorithm implements DataHandler {
                 break;
             }
             array[i] = tmp.getValue();
-            tmp = tmp.getNextRef();
+            tmp = tmp.getNext();
             i++;
         }
         return array;
@@ -86,47 +88,49 @@ public class LinkedList extends Algorithm implements DataHandler {
 
     public void add(int element) {
 
-        Node nd = new Node();
-        nd.setValue(element);
+        Node node = new Node();
+        node.setValue(element);
         if (head == null) {
-            head = nd;
-            tail = nd;
+            head = node;
+            tail = node;
         } else {
-            tail.setNextRef(nd);
-            tail = nd;
+            tail.setNext(node);
+            tail = node;
         }
-        ;
     }
 
-    public void addAfter(int element, int after) {
+    public void addAfter(int element) {
 
-        Node tmp = head;
-        Node refNode = null;
-        System.out.println("Traversing to all nodes..");
-
-        while (true) {
-            if (tmp == null) {
-                break;
-            }
-            if (tmp.getValue() == after) {
-                refNode = tmp;
-                break;
-            }
-            tmp = tmp.getNextRef();
-        }
-        if (refNode != null) {
-            Node nd = new Node();
-            nd.setValue(element);
-            nd.setNextRef(tmp.getNextRef());
-            if (tmp == tail) {
-                tail = nd;
-            }
-            tmp.setNextRef(nd);
-
+        Node node = new Node();
+        node.setValue(element);
+        if (myLinkedList.head == null) {
+            myLinkedList.head = node;
+            myLinkedList.tail = node;
         } else {
-            System.out.println("Unable to find the given element...");
+            myLinkedList.tail.setNext(node);
+            myLinkedList.tail = node;
         }
+        updateData(myLinkedList);
+        highlightNode(element);
+        sleep();
     }
+
+    public void addFront(int element) {
+
+        Node node = new Node();
+        node.setValue(element);
+        if (myLinkedList.head == null) {
+            myLinkedList.head = node;
+            myLinkedList.tail = node;
+        } else {
+            node.setNext(myLinkedList.head);
+            myLinkedList.head = node;
+        }
+        updateData(myLinkedList);
+        highlightNode(element);
+        sleep();
+    }
+
 
     public void deleteAfter(int after) {
 
@@ -142,12 +146,12 @@ public class LinkedList extends Algorithm implements DataHandler {
                 refNode = tmp;
                 break;
             }
-            tmp = tmp.getNextRef();
+            tmp = tmp.getNext();
         }
         if (refNode != null) {
-            tmp = refNode.getNextRef();
-            refNode.setNextRef(tmp.getNextRef());
-            if (refNode.getNextRef() == null) {
+            tmp = refNode.getNext();
+            refNode.setNext(tmp.getNext());
+            if (refNode.getNext() == null) {
                 tail = refNode;
             }
             System.out.println("Deleted: " + tmp.getValue());
@@ -157,45 +161,24 @@ public class LinkedList extends Algorithm implements DataHandler {
     }
 
 
-    //LinkedList visuzlizations
-    public void visualizeAdd(int element) {
-
-        Node nd = new Node();
-        nd.setValue(element);
-        sleep();
-        if (linkedList.head == null) {
-            linkedList.head = nd;
-            linkedList.tail = nd;
-        } else {
-            linkedList.tail.setNextRef(nd);
-            linkedList.tail = nd;
-        }
-        sleep();
-        updateData(linkedList);
-        highlightNode(element);
-    }
 
     public void deleteFront() {
-
-        if (linkedList.head == null) {
+        if (myLinkedList.head == null) {
             return;
         }
-        Node tmp = linkedList.head;
-        sleep();
+        Node tmp = myLinkedList.head;
         highlightNode(tmp.getValue());
         sleep();
-        linkedList.head = tmp.getNextRef();
-        if (linkedList.head == null) {
-            linkedList.tail = null;
+        myLinkedList.head = tmp.getNext();
+        if (myLinkedList.head == null) {
+            myLinkedList.tail = null;
         }
-        sleep();
-        updateData(linkedList);
+        updateData(myLinkedList);
     }
 
 
     public void traverse() {
-        sleep();
-        Node tmp = linkedList.head;
+        Node tmp = myLinkedList.head;
         highlightNode(tmp.getValue());
         while (true) {
             if (tmp == null) {
@@ -203,8 +186,7 @@ public class LinkedList extends Algorithm implements DataHandler {
             }
             highlightNode(tmp.getValue());
             sleep();
-            sleep();
-            tmp = tmp.getNextRef();
+            tmp = tmp.getNext();
         }
         completed();
     }
@@ -227,8 +209,11 @@ public class LinkedList extends Algorithm implements DataHandler {
                 startExecution();
                 traverse();
                 break;
-            case ADD:
-                visualizeAdd(util.getRandomInt(40)+5);
+            case ADD_END:
+                addAfter(currMax++);
+                break;
+            case ADD_FRONT:
+                addFront(currMax++);
                 break;
             case DELETE_FRONT:
                 deleteFront();
@@ -238,10 +223,10 @@ public class LinkedList extends Algorithm implements DataHandler {
 
     @Override
     public void onDataRecieved(Object data) {
-        this.linkedList = (LinkedList) data;
+        this.myLinkedList = (myLinkedList) data;
     }
 
-    public void setData(final LinkedList ll) {
+    public void setData(final myLinkedList ll) {
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -253,7 +238,7 @@ public class LinkedList extends Algorithm implements DataHandler {
         sendData(ll);
     }
 
-    private void updateData(final LinkedList ll) {
+    private void updateData(final myLinkedList ll) {
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {

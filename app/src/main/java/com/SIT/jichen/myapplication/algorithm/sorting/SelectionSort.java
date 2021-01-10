@@ -24,14 +24,22 @@ public class SelectionSort extends SortAlgorithm {
         int n = array.length;
         for (int i = 0; i < n-1; i++) {
             int min_idx = i;
-            for (int j = i+1; j < n; j++)
+            for (int j = i+1; j < n; j++) {
+                highlightTrace(j);
+                sleep();
                 if (array[j] < array[min_idx]) {
                     min_idx = j;
                 }
+            }
+            highlightFound(min_idx);
+            sleep();
+
+            highlightSwap(min_idx,i);
+            sleep();
             int temp = array[min_idx];
             array[min_idx] = array[i];
-            highlightSwap(min_idx,i);
             array[i] = temp;
+            highlightSwap(min_idx,i);
             sleep();
         }
         completed();

@@ -4,6 +4,7 @@ import android.app.Activity;
 
 import com.SIT.jichen.myapplication.algorithm.Algorithm;
 import com.SIT.jichen.myapplication.algorithm.DataHandler;
+import com.SIT.jichen.myapplication.constants.Constants;
 import com.SIT.jichen.myapplication.visualization.DirectedGraphVisualizer;
 
 import java.util.LinkedList;
@@ -118,7 +119,10 @@ public class GraphTraversalAlgorithm extends Algorithm implements DataHandler {
 
     @Override
     public void onMessageReceived(String message) {
-        if (message.equals(TRAVERSE_BFS)) {
+        if (message.equals(Constants.COMMAND_START_ALGORITHM)) {
+            startExecution();
+        }
+        else if (message.equals(TRAVERSE_BFS)) {
             startExecution();
             bfs(graph.getRoot());
         } else if (message.endsWith(TRAVERSE_DFS)) {

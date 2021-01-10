@@ -2,6 +2,7 @@ package com.SIT.jichen.myapplication.algorithm.list;
 
 import android.app.Activity;
 
+import com.SIT.jichen.myapplication.constants.Constants;
 import com.SIT.jichen.myapplication.util;
 import com.SIT.jichen.myapplication.algorithm.Algorithm;
 import com.SIT.jichen.myapplication.algorithm.DataHandler;
@@ -20,6 +21,8 @@ public class Stack extends Algorithm implements DataHandler {
     public int maxSize;
     private int[] stackArray;
     private int top;
+
+    int currMax = Constants.NUM_NODES_IN_STACK + 1;
 
     public Stack(int s) {
         maxSize = s;
@@ -85,6 +88,8 @@ public class Stack extends Algorithm implements DataHandler {
         if (stack.isEmpty()) {
             return;
         }
+        visualizePeek();
+
         int pop = stack.pop();
         int top = stack.top;
         stack.stackArray[top + 1] = 0;
@@ -110,7 +115,7 @@ public class Stack extends Algorithm implements DataHandler {
                 visualizePeek();
                 break;
             case PUSH:
-                visualizePush(util.getRandomInt(50) + 15);
+                visualizePush(currMax++);
                 break;
             case POP:
                 visualizePop();

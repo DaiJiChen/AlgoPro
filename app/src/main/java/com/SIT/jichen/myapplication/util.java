@@ -5,7 +5,7 @@ import android.content.Context;
 import com.SIT.jichen.myapplication.algorithm.graph.Digraph;
 import com.SIT.jichen.myapplication.algorithm.graph.WeightedGraph;
 import com.SIT.jichen.myapplication.algorithm.graph.WeightedGraph2;
-import com.SIT.jichen.myapplication.algorithm.list.LinkedList;
+import com.SIT.jichen.myapplication.algorithm.list.myLinkedList;
 import com.SIT.jichen.myapplication.algorithm.list.Stack;
 import com.SIT.jichen.myapplication.algorithm.tree.BinarySearchTree;
 import com.SIT.jichen.myapplication.constants.Constants;
@@ -19,6 +19,15 @@ import java.util.Random;
 
 public class util {
 
+    public static final boolean algoExist(String algoName) {
+        for(String[] algos : MainActivity.allTopics.values())
+            for(String algo : algos)
+                if(algo.equals(algoName) && !algo.equals(Constants.MORE_IS_COMING))
+                    return true;
+
+        return false;
+    }
+
     public static final int[] bst_array = {5, 8, 10, 3, 1, 6, 9, 7, 2, 0};
 
     public static final int[][] bst = {
@@ -30,11 +39,17 @@ public class util {
 
     public static int[] createRandomArray(int size) {
 
-        int[] integers = new int[size];
+        ArrayList<Integer> integers = new ArrayList<>();
+        for(int i = 0; i < size; i++)
+            integers.add(i+1);
+
+        int[] res = new int[size];
         for (int i = 0; i < size; i++) {
-            integers[i] = new Random().nextInt(9) + 1;
+            int index = new Random().nextInt(integers.size());
+            res[i] = integers.get(index);
+            integers.remove(index);
         }
-        return integers;
+        return res;
     }
 
     public static int[] createUniqueRandomArray(int size) {
@@ -60,11 +75,10 @@ public class util {
 
     }
 
-    public static LinkedList createLinkedList() {
-        LinkedList ll = new LinkedList();
-        int[] array = createUniqueRandomArray(5);
-        for (int i = 0; i < array.length; i++) {
-            ll.add(array[i]);
+    public static myLinkedList createLinkedList() {
+        myLinkedList ll = new myLinkedList();
+        for (int i = 0; i < Constants.NUM_NODES_IN_LINKEDLIST; i++) {
+            ll.add(i + 1);
         }
         return ll;
 
@@ -73,10 +87,9 @@ public class util {
     public static Stack createStack() {
         Stack stack = new Stack(8);
         ArrayList<Integer> a = new ArrayList<>();
-        for (int i = 10; i <= 13; i++) {
+        for (int i = 1; i <= Constants.NUM_NODES_IN_STACK; i++) {
             a.add(i);
         }
-        Collections.shuffle(a);
 
         for (int i = 0; i < a.size(); i++) {
             stack.push(a.get(i));

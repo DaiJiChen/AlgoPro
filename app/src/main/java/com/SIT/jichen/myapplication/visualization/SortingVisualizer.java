@@ -16,11 +16,13 @@ public class SortingVisualizer extends AlgoVisualizer {
     Paint paint;
     Paint highlightPaintSwap;
     Paint highlightPaintTrace;
+    Paint highlightPaintFound;
     Paint textPaint;
     int[] array;
 
-    int highlightPositionOne = -1, highlightPositionTwo = -1;
-    int highlightPosition = -1;
+    int swapPositionOne = -1, swapPositionTwo = -1;
+    int tracePosition = -1;
+    int foundPosition = -1;
     int lineStrokeWidth = getDimensionInPixel(20);
 
     public SortingVisualizer(Context context) {
@@ -45,6 +47,9 @@ public class SortingVisualizer extends AlgoVisualizer {
         highlightPaintTrace = new Paint(paint);
         highlightPaintTrace.setColor(ContextCompat.getColor(getContext(), R.color.light_Blue));
 
+        highlightPaintFound = new Paint(paint);
+        highlightPaintFound.setColor(ContextCompat.getColor(getContext(), R.color.deep_Blue));
+
         textPaint = new TextPaint();
         textPaint.setColor(Color.BLACK);
         textPaint.setTextSize(getDimensionInPixelFromSP(15));
@@ -61,9 +66,11 @@ public class SortingVisualizer extends AlgoVisualizer {
             float xPos = margin + getDimensionInPixel(10);
             for (int i = 0; i < array.length; i++) {
 
-                if (i == highlightPositionOne || i == highlightPositionTwo) {
+                if (i == swapPositionOne || i == swapPositionTwo) {
                     canvas.drawLine(xPos, getHeight() - (float) ((array[i] / 10.0) * getHeight()), xPos, getHeight(), highlightPaintSwap);
-                } else if (i == highlightPosition)
+                } else if (i == foundPosition)
+                    canvas.drawLine(xPos, getHeight() - (float) ((array[i] / 10.0) * getHeight()), xPos, getHeight(), highlightPaintFound);
+                else if (i == tracePosition)
                     canvas.drawLine(xPos, getHeight() - (float) ((array[i] / 10.0) * getHeight()), xPos, getHeight(), highlightPaintTrace);
                 else {
                     canvas.drawLine(xPos, getHeight() - (float) ((array[i] / 10.0) * getHeight()), xPos, getHeight(), paint);
@@ -73,8 +80,8 @@ public class SortingVisualizer extends AlgoVisualizer {
 
                 xPos += margin + 30;
             }
-            highlightPositionOne = -1;
-            highlightPositionTwo = -1;
+            swapPositionOne = -1;
+            swapPositionTwo = -1;
         }
 
 
@@ -91,21 +98,27 @@ public class SortingVisualizer extends AlgoVisualizer {
     }
 
     public void highlightSwap(int one, int two) {
-        this.highlightPositionOne = one;
-        this.highlightPositionTwo = two;
+        this.swapPositionOne = one;
+        this.swapPositionTwo = two;
         invalidate();
     }
 
     public void highlightTrace(int position) {
-        this.highlightPosition = position;
+        this.tracePosition = position;
+        invalidate();
+    }
+
+    public void highlightFound(int position) {
+        this.foundPosition = position;
         invalidate();
     }
 
     @Override
     public void onCompleted() {
-        this.highlightPosition = -1;
-        this.highlightPositionTwo = -1;
-        this.highlightPositionOne = -1;
+        this.tracePosition = -1;
+        this.swapPositionTwo = -1;
+        this.swapPositionOne = -1;
+        this.foundPosition = -1;
         invalidate();
     }
 }

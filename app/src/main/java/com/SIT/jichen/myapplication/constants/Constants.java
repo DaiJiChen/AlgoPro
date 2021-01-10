@@ -4,6 +4,8 @@ public class Constants {
     public static final int NUM_ITEM_IN_SEARCH = 15;
     public static final int NUM_ITEM_IN_SORT = 7;
     public static final int NUM_VERTEX_IN_GRAPH = 5;
+    public static final int NUM_NODES_IN_LINKEDLIST = 3;
+    public static final int NUM_NODES_IN_STACK = 4;
 
     public static final int VISUALIZATION_WINDOW_HEIGHT = 200; //dp
     public static final int TIME_INTERVAL_BETWEEN_STEPS = 1000; //ms

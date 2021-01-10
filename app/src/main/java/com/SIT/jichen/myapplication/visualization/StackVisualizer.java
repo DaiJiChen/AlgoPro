@@ -57,7 +57,7 @@ public class StackVisualizer extends AlgoVisualizer {
         bounds = new Rect();
         textPaint.getTextBounds("0", 0, 1, bounds);
 
-        circlePaint.setColor(ContextCompat.getColor(getContext(), R.color.light_Blue));
+        circlePaint.setColor(ContextCompat.getColor(getContext(), R.color.green));
         circlePaint.setAntiAlias(true);
 
         linePaint = new Paint();

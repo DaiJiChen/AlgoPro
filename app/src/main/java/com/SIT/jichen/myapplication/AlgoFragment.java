@@ -68,7 +68,7 @@ public class AlgoFragment extends Fragment {
         this.startCommand = startCommand;
     }
 
-    public void setupFragment(String algoName) {
+    public boolean setupFragment(String algoName) {
         assert algoName != null;
 
         final AlgoVisualizer visualizer;
@@ -77,15 +77,15 @@ public class AlgoFragment extends Fragment {
 
         switch (algoName) {
             case Constants.LINEAR_SEARCH:
-                visualizer = new BinarySearchVisualizer(getActivity());
+                visualizer = new SearchVisualizer(getActivity());
                 appBarLayout.addView(visualizer);
-                algorithm = new LinearSearch((BinarySearchVisualizer) visualizer, getActivity());
+                algorithm = new LinearSearch((SearchVisualizer) visualizer, getActivity());
                 ((LinearSearch) algorithm).setData(util.createArray(Constants.NUM_ITEM_IN_SEARCH, false));
                 break;
             case Constants.BINARY_SEARCH:
-                visualizer = new BinarySearchVisualizer(getActivity());
+                visualizer = new SearchVisualizer(getActivity());
                 appBarLayout.addView(visualizer);
-                algorithm = new BinarySearch((BinarySearchVisualizer) visualizer, getActivity());
+                algorithm = new BinarySearch((SearchVisualizer) visualizer, getActivity());
                 ((BinarySearch) algorithm).setData(util.createArray(Constants.NUM_ITEM_IN_SEARCH, true));
                 break;
 
@@ -131,6 +131,13 @@ public class AlgoFragment extends Fragment {
                 ((BSTAlgorithm) algorithm).setArrayVisualizer(arrayVisualizer);
                 ((BSTAlgorithm) algorithm).setData(util.createBinaryTree());
                 break;
+            case Constants.BFS:
+            case Constants.DFS:
+                visualizer = new DirectedGraphVisualizer(getActivity());
+                appBarLayout.addView(visualizer);
+                algorithm = new GraphTraversalAlgorithm((DirectedGraphVisualizer) visualizer, getActivity());
+                ((GraphTraversalAlgorithm) algorithm).setData(util.createDirectedGraph());
+                break;
 
 
             case Constants.LINKED_LIST:
@@ -138,9 +145,9 @@ public class AlgoFragment extends Fragment {
                 LinkedListControls controls = new LinkedListControls(getActivity(), floatingActionButton);
                 appBarLayout.addView(visualizer);
                 appBarLayout.addView(controls);
-                algorithm = new LinkedList((LinkedListVisualizer) visualizer, getActivity());
-                ((LinkedList) algorithm).setData(util.createLinkedList());
-                controls.setLinkedList((LinkedList) algorithm);
+                algorithm = new myLinkedList((LinkedListVisualizer) visualizer, getActivity());
+                ((myLinkedList) algorithm).setData(util.createLinkedList());
+                controls.setMyLinkedList((myLinkedList) algorithm);
                 floatingActionButton.setVisibility(View.GONE);
                 break;
             case Constants.STACK:
@@ -153,13 +160,9 @@ public class AlgoFragment extends Fragment {
                 stackcontrols.setStack((Stack) algorithm);
                 floatingActionButton.setVisibility(View.GONE);
                 break;
-            case Constants.BFS:
-            case Constants.DFS:
-                visualizer = new DirectedGraphVisualizer(getActivity());
-                appBarLayout.addView(visualizer);
-                algorithm = new GraphTraversalAlgorithm((DirectedGraphVisualizer) visualizer, getActivity());
-                ((GraphTraversalAlgorithm) algorithm).setData(util.createDirectedGraph());
-                break;
+
+
+
             case Constants.DIJKSTRA:
                 visualizer = new WeightedGraphVisualizer(getActivity());
                 appBarLayout.addView(visualizer);
@@ -173,11 +176,12 @@ public class AlgoFragment extends Fragment {
                 ((BellmanFordAlgorithm) algorithm).setData(util.createWeightedGraph2());
                 break;
             default:
-                visualizer = null;
+                Toast.makeText(getActivity(), "Unknown algoName while inflate visualizer", Toast.LENGTH_SHORT).show();
+                return false;
         }
 
         Algorithm.setInterval(Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(getActivity())
-                .getString(Constants.KEY_INTERVAL, "500")));
+                .getString(Constants.KEY_INTERVAL, "1000")));
         algorithm.setStarted(false);
         floatingActionButton.setImageResource(R.drawable.ic_play);
 
@@ -195,7 +199,8 @@ public class AlgoFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (!algorithm.isStarted()) {
-                    algorithm.sendMessage(startCommand);
+//                    algorithm.sendMessage(startCommand);
+                    algorithm.sendMessage("start_bst_search");
                     floatingActionButton.setImageResource(R.drawable.ic_pause);
                 } else {
                     if (algorithm.isPaused()) {
@@ -210,6 +215,8 @@ public class AlgoFragment extends Fragment {
         });
 
         setText(algoName);
+
+        return true;
     }
 
     public void setText(final String algoName) {
@@ -223,23 +230,23 @@ public class AlgoFragment extends Fragment {
 
         switch (algoName) {
             case Constants.BUBBLE_SORT:
-                explanationText.setText(AlgoText.TEXT_DEMO);
-                complexityText.setText(AlgoText.TEXT_DEMO);
+                explanationText.setText(AlgoText.EXP_BUBBLE_SORT);
+                complexityText.setText(AlgoText.COMPL_BUBBLE_SORT);
                 addCodeDemo(AlgoCode.CODE_BUBBLE_SORT);
                 break;
             case Constants.INSERTION_SORT:
-                explanationText.setText(AlgoText.TEXT_DEMO);
-                complexityText.setText(AlgoText.TEXT_DEMO);
+                explanationText.setText(AlgoText.EXP_INSERTION_SORT);
+                complexityText.setText(AlgoText.COMPL_INSERTION_SORT);
                 addCodeDemo(AlgoCode.CODE_INSERTION_SORT);
                 break;
             case Constants.SELECTION_SORT:
-                explanationText.setText(AlgoText.TEXT_DEMO);
-                complexityText.setText(AlgoText.TEXT_DEMO);
+                explanationText.setText(AlgoText.EXP_SELECTION_SORT);
+                complexityText.setText(AlgoText.COMPL_SELECTION_SORT);
                 addCodeDemo(AlgoCode.CODE_SELECTION_SORT);
                 break;
             case Constants.QUICK_SORT:
-                explanationText.setText(AlgoText.TEXT_DEMO);
-                complexityText.setText(AlgoText.TEXT_DEMO);
+                explanationText.setText(AlgoText.EXP_QUICK_SORT);
+                complexityText.setText(AlgoText.COMPL_QUICK_SORT);
                 addCodeDemo(AlgoCode.CODE_QUICK_SORT);
                 break;
                 
@@ -257,47 +264,47 @@ public class AlgoFragment extends Fragment {
                 
                 
             case Constants.BST_SEARCH:
-                explanationText.setText(AlgoText.TEXT_DEMO);
-                complexityText.setText(AlgoText.TEXT_DEMO);
+                explanationText.setText(AlgoText.EXP_BST_SEARCH);
+                complexityText.setText(AlgoText.COMPL_BST_SEARCH);
                 addCodeDemo(AlgoCode.CODE_BST_SEARCH);
                 break;
             case Constants.BST_INSERT:
-                explanationText.setText(AlgoText.TEXT_DEMO);
-                complexityText.setText(AlgoText.TEXT_DEMO);
+                explanationText.setText(AlgoText.EXP_BST_INSERT);
+                complexityText.setText(AlgoText.COMPL_BST_INSERT);
                 addCodeDemo(AlgoCode.CODE_BST_INSERT);
                 break;
             case Constants.BFS:
-                explanationText.setText(AlgoText.TEXT_DEMO);
-                complexityText.setText(AlgoText.TEXT_DEMO);
+                explanationText.setText(AlgoText.EXP_TREE_BFS);
+                complexityText.setText(AlgoText.COMPL_TREE_BFS);
                 addCodeDemo(AlgoCode.CODE_TREE_BFS);
                 break;
             case Constants.DFS:
-                explanationText.setText(AlgoText.TEXT_DEMO);
-                complexityText.setText(AlgoText.TEXT_DEMO);
+                explanationText.setText(AlgoText.EXP_TREE_DFS);
+                complexityText.setText(AlgoText.COMPL_TREE_DFS);
                 addCodeDemo(AlgoCode.CODE_TREE_DFS);
                 break;
                 
                 
             case Constants.LINKED_LIST:
-                explanationText.setText(AlgoText.TEXT_DEMO);
-                complexityText.setText(AlgoText.TEXT_DEMO);
+                explanationText.setText(AlgoText.EXP_LINKED_LIST);
+                complexityText.setText(AlgoText.COMPL_LINKED_LIST);
                 addCodeDemo(AlgoCode.CODE_LINKED_LIST);
                 break;
             case Constants.STACK:
-                explanationText.setText(AlgoText.TEXT_DEMO);
-                complexityText.setText(AlgoText.TEXT_DEMO);
+                explanationText.setText(AlgoText.EXP_STACK);
+                complexityText.setText(AlgoText.COMPL_STACK);
                 addCodeDemo(AlgoCode.CODE_STACK);
                 break;
                 
                 
             case Constants.DIJKSTRA:
-                explanationText.setText(AlgoText.TEXT_DEMO);
-                complexityText.setText(AlgoText.TEXT_DEMO);
+                explanationText.setText(AlgoText.EXP_DIJKSTRA);
+                complexityText.setText(AlgoText.COMPL_DIJKSTRA);
                 addCodeDemo(AlgoCode.CODE_DIJKSTRA);
                 break;
             case Constants.BELLMAN_FORD:
-                explanationText.setText(AlgoText.TEXT_DEMO);
-                complexityText.setText(AlgoText.TEXT_DEMO);
+                explanationText.setText(AlgoText.EXP_BELLMAN_FORD);
+                complexityText.setText(AlgoText.COMPL_BELLMAN_FORD);
                 addCodeDemo((AlgoCode.CODE_BELLMAN_FORD));
                 break;
 

@@ -2,39 +2,6 @@ package com.SIT.jichen.myapplication.constants;
 
 public class AlgoCode {
 
-//    public static final String CODE_BUBBLE_SORT = ;
-//
-//    public static final String CODE_INSERTION_SORT = ;
-//
-//    public static final String CODE_SELECTION_SORT = ;
-//
-//    public static final String CODE_QUICKSORT = ;
-//
-//    public static final String CODE_BST_SEARCH = ;
-//
-//    public static final String CODE_BST_INSERT = ;
-//    public static final String CODE_BINARY_SEARCH = ;
-//
-//    public static final String CODE_LINEAR_SEARCH = ;
-//
-//    public static final String CODE_LINKED_LIST_INSERT = ;
-//
-//    public static final String CODE_LINKED_LIST_DELETE = ;
-//
-//    public static final String CODE_STACK_PUSH = ;
-//
-//    public static final String CODE_STACK_PEEK = ;
-//
-//    public static final String CODE_STACK_POP = ;
-//
-//    public static final String CODE_GRAPH_BFS = ;
-//
-//    public static final String CODE_GRAPH_DFS = ;
-//
-//    public static final String CODE_BELLMAN_FORD = ;
-//
-//    public static final String CODE_DIJKSTRA = ;
-
     public static final String CODE_LINEAR_SEARCH =
             "int linear_search(int arr[], int x) { \n" +
             "    int n = arr.length; \n" +
@@ -158,10 +125,10 @@ public class AlgoCode {
 
     public static final String CODE_TREE_BFS =
             "public List<List<Integer>> level_order(TreeNode root) {\n" +
-            "    List<List<Integer>> result = new LinkedList<List<Integer>>();\n" +
+            "    List<List<Integer>> result = new myLinkedList<List<Integer>>();\n" +
             "    if(root == null) return result;\n" +
             "        \n" +
-            "    Queue<TreeNode> queue = new LinkedList<>();\n" +
+            "    Queue<TreeNode> queue = new myLinkedList<>();\n" +
             "    queue.add(root);\n" +
             "        \n" +
             "    while(!queue.isEmpty()) {\n" +
@@ -333,7 +300,7 @@ public class AlgoCode {
             "    Integer sourceDistance = sourceNode.getDistance();\n" +
             "    if (sourceDistance + edgeWeigh < evaluationNode.getDistance()) {\n" +
             "        evaluationNode.setDistance(sourceDistance + edgeWeigh);\n" +
-            "        LinkedList<Node> shortestPath = new LinkedList<>(sourceNode.getShortestPath());\n" +
+            "        myLinkedList<Node> shortestPath = new myLinkedList<>(sourceNode.getShortestPath());\n" +
             "        shortestPath.add(sourceNode);\n" +
             "        evaluationNode.setShortestPath(shortestPath);\n" +
             "    }\n" +

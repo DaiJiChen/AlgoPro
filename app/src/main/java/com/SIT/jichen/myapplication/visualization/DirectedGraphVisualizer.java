@@ -8,6 +8,9 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 
+import androidx.core.content.ContextCompat;
+
+import com.SIT.jichen.myapplication.R;
 import com.SIT.jichen.myapplication.algorithm.graph.Digraph;
 import com.SIT.jichen.myapplication.visualization.AlgoVisualizer;
 
@@ -54,18 +57,18 @@ public class DirectedGraphVisualizer extends AlgoVisualizer {
         bounds = new Rect();
         textPaint.getTextBounds("0", 0, 1, bounds);
 
-        circlePaint.setColor(Color.RED);
+        circlePaint.setColor(ContextCompat.getColor(getContext(), R.color.green));
         circlePaint.setAntiAlias(true);
 
         linePaint = new Paint();
         linePaint.setStrokeWidth(5);
-        linePaint.setColor(Color.BLACK);
+        linePaint.setColor(ContextCompat.getColor(getContext(), R.color.black));
 
         circleHighlightPaint = new Paint(circlePaint);
-        circleHighlightPaint.setColor(Color.BLUE);
+        circleHighlightPaint.setColor(ContextCompat.getColor(getContext(), R.color.red));
 
         lineHighlightPaint = new Paint(linePaint);
-        lineHighlightPaint.setColor(Color.BLUE);
+        lineHighlightPaint.setColor(ContextCompat.getColor(getContext(), R.color.red));
         lineHighlightPaint.setStrokeWidth(10);
     }
 
@@ -201,7 +204,7 @@ public class DirectedGraphVisualizer extends AlgoVisualizer {
 
     @Override
     public void onCompleted() {
-        highlightLine.clear();
-        highlightNode.clear();
+//        highlightLine.clear();
+//        highlightNode.clear();
     }
 }

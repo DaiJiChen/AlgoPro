@@ -8,12 +8,12 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.SIT.jichen.myapplication.R;
-import com.SIT.jichen.myapplication.algorithm.list.LinkedList;
+import com.SIT.jichen.myapplication.algorithm.list.myLinkedList;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class LinkedListControls extends LinearLayout {
 
-    LinkedList linkedList;
+    myLinkedList myLinkedList;
     FloatingActionButton fab;
 
     public LinkedListControls(Context context, FloatingActionButton fab) {
@@ -27,8 +27,8 @@ public class LinkedListControls extends LinearLayout {
         initialise();
     }
 
-    public void setLinkedList(LinkedList algorithm) {
-        this.linkedList = algorithm;
+    public void setMyLinkedList(myLinkedList algorithm) {
+        this.myLinkedList = algorithm;
     }
 
 
@@ -37,22 +37,29 @@ public class LinkedListControls extends LinearLayout {
 
         View controls = LayoutInflater.from(getContext()).inflate(R.layout.linked_list_controls, this, false);
 
-        final Button add, deleteFront, traverse;
+        final Button addFront, addEnd, deleteFront, traverse;
 
-        add = (Button) controls.findViewById(R.id.llc_add);
+        addFront = (Button) controls.findViewById(R.id.llc_add_front);
+        addEnd = (Button) controls.findViewById(R.id.llc_add_end);
         deleteFront = (Button) controls.findViewById(R.id.llc_delete_front);
         traverse = (Button) controls.findViewById(R.id.llc_traverse);
 
-        add.setOnClickListener(new OnClickListener() {
+        addFront.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                linkedList.sendMessage(LinkedList.ADD);
+                myLinkedList.sendMessage(myLinkedList.ADD_FRONT);
+            }
+        });
+        addEnd.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myLinkedList.sendMessage(myLinkedList.ADD_END);
             }
         });
         deleteFront.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                linkedList.sendMessage(LinkedList.DELETE_FRONT);
+                myLinkedList.sendMessage(myLinkedList.DELETE_FRONT);
             }
         });
         traverse.setOnClickListener(new OnClickListener() {

@@ -14,7 +14,7 @@ import com.SIT.jichen.myapplication.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BinarySearchVisualizer extends AlgoVisualizer {
+public class SearchVisualizer extends AlgoVisualizer {
 
     Paint paint; // green
     Paint highlightPaint; //light_blue
@@ -30,12 +30,12 @@ public class BinarySearchVisualizer extends AlgoVisualizer {
     int lineStrokeWidth = getDimensionInPixel(10);
 
 
-    public BinarySearchVisualizer(Context context) {
+    public SearchVisualizer(Context context) {
         super(context);
         initialise();
     }
 
-    public BinarySearchVisualizer(Context context, AttributeSet attrs) {
+    public SearchVisualizer(Context context, AttributeSet attrs) {
         super(context, attrs);
         initialise();
     }
@@ -121,6 +121,9 @@ public class BinarySearchVisualizer extends AlgoVisualizer {
 
     @Override
     public void onCompleted() {
-
+        highlightPositions.clear();
+        tracePosition = -1;
+        targetPosition = -1;
+        invalidate();
     }
 }
