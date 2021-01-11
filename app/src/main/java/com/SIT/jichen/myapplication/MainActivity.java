@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -31,6 +32,20 @@ public class MainActivity extends AppCompatActivity {
         allTopics.put(Constants.SORTING, SortingAlgos);
         allTopics.put(Constants.HASHMAP, HashMapAlgos);
         allTopics.put(Constants.GRAPH, GraphAlgos);
+    }
+
+    public void ContactUsOnClick(View view) {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                ContactUs.showAbout(MainActivity.this);
+            }
+        }, 200);
+    }
+
+    public void DonateOnClick(View view) {
+        
     }
 
     public void cardOnClick(View view) {

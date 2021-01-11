@@ -7,5 +7,5 @@
     <string name="HashMap">HashMap</string>
     <string name="Graph">Graph</string>bubble_sort
     <string name="algo_name">algo_name</string>
-    <string name="a">2</string>
+    <string name="Report_bugs">Report any bugs <u> here </u></string>
 </resources>
