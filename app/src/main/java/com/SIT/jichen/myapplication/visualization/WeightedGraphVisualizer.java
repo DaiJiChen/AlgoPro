@@ -8,6 +8,9 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 
+import androidx.core.content.ContextCompat;
+
+import com.SIT.jichen.myapplication.R;
 import com.SIT.jichen.myapplication.algorithm.graph.WeightedGraph;
 
 import java.util.HashMap;
@@ -23,7 +26,8 @@ public class WeightedGraphVisualizer extends AlgoVisualizer {
     private Paint lineHighlightPaint;
     private Rect bounds;
 
-    private int highlightNode = -1;
+    private int highlightNode1 = -1;
+    private int highlightNode2 = -1;
     private int highlightLineStart = -1, highlightLineEnd = -1;
     private Map<Integer, Point> pointMap = new HashMap<>();
 
@@ -52,10 +56,10 @@ public class WeightedGraphVisualizer extends AlgoVisualizer {
         textPaint.getTextBounds("0", 0, 1, bounds);
 
         weightPaint = new Paint(textPaint);
-        weightPaint.setColor(Color.BLUE);
+        weightPaint.setColor(ContextCompat.getColor(getContext(), R.color.deep_Blue));
         weightPaint.setTextSize(getDimensionInPixelFromSP(14));
 
-        circlePaint.setColor(Color.RED);
+        circlePaint.setColor(ContextCompat.getColor(getContext(), R.color.green));
         circlePaint.setAntiAlias(true);
 
         linePaint = new Paint();
@@ -63,10 +67,10 @@ public class WeightedGraphVisualizer extends AlgoVisualizer {
         linePaint.setColor(Color.BLACK);
 
         circleHighlightPaint = new Paint(circlePaint);
-        circleHighlightPaint.setColor(Color.BLUE);
+        circleHighlightPaint.setColor(ContextCompat.getColor(getContext(), R.color.red));
 
         lineHighlightPaint = new Paint(linePaint);
-        lineHighlightPaint.setColor(Color.BLUE);
+        lineHighlightPaint.setColor(ContextCompat.getColor(getContext(), R.color.red));
         lineHighlightPaint.setStrokeWidth(10);
     }
 
@@ -129,7 +133,7 @@ public class WeightedGraphVisualizer extends AlgoVisualizer {
     private void drawCircleTextNode(Canvas canvas, Point p, int number) {
         String text = String.valueOf(number);
 
-        if (highlightNode == number) {
+        if (highlightNode1 == number || highlightNode2 == number) {
             canvas.drawCircle(p.x, p.y, getDimensionInPixel(15), circleHighlightPaint);
         } else {
             canvas.drawCircle(p.x, p.y, getDimensionInPixel(15), circlePaint);
@@ -159,8 +163,13 @@ public class WeightedGraphVisualizer extends AlgoVisualizer {
 
     }
 
-    public void highlightNode(int node) {
-        this.highlightNode = node;
+    public void highlightNode1(int node) {
+        this.highlightNode1 = node;
+        invalidate();
+    }
+
+    public void highlightNode2(int node) {
+        this.highlightNode2 = node;
         invalidate();
     }
 
@@ -175,7 +184,8 @@ public class WeightedGraphVisualizer extends AlgoVisualizer {
     public void onCompleted() {
         this.highlightLineStart = -1;
         this.highlightLineEnd = -1;
-        this.highlightNode = -1;
+        this.highlightNode1 = -1;
+        this.highlightNode2 = -1;
         invalidate();
     }
 

@@ -38,7 +38,8 @@ public class BellmanFordAlgorithm extends Algorithm implements DataHandler {
             for (int j = 0; j < E; ++j) {
                 int u = graph.edge[j].src;
                 int v = graph.edge[j].dest;
-                highlightNode(v);
+                highlightNode1(u);
+                highlightNode2(v);
                 highlightLine(u, v);
                 sleep();
                 int weight = graph.edge[j].weight;
@@ -60,11 +61,20 @@ public class BellmanFordAlgorithm extends Algorithm implements DataHandler {
         }
     }
 
-    private void highlightNode(final int node) {
+    private void highlightNode1(final int node) {
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                visualizer.highlightNode(node);
+                visualizer.highlightNode1(node);
+            }
+        });
+    }
+
+    private void highlightNode2(final int node) {
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                visualizer.highlightNode2(node);
             }
         });
     }

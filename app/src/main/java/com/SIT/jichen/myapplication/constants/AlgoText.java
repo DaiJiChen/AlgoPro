@@ -177,7 +177,6 @@ public class AlgoText {
             "2. Loop over all edges, check if the next node distance > current node distance + edge weight, in this case update the next node distance to \"current node distance + edge weight\".";
 
     public static final String COMPL_BELLMAN_FORD =
-            "- Time: O(V * E)\n" +
-            "        In case E = V^2, O(V^3)";
+            "- Time: O(V * E). In case E = V^2, O(V^3)";
 
 }

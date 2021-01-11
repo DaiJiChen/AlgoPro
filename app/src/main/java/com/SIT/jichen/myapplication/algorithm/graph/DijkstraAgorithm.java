@@ -42,7 +42,8 @@ public class DijkstraAgorithm extends Algorithm implements DataHandler {
             final int[] n = G.neighbors(next);
             for (int j = 0; j < n.length; j++) {
                 final int v = n[j];
-                highlightNode(v);
+                highlightNode1(next);
+                highlightNode2(v);
                 highlightLine(next, v);
                 sleep();
                 final int d = dist[next] + G.getWeight(next, v);
@@ -68,11 +69,20 @@ public class DijkstraAgorithm extends Algorithm implements DataHandler {
         return y;
     }
 
-    private void highlightNode(final int node) {
+    private void highlightNode1(final int node) {
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                visualizer.highlightNode(node);
+                visualizer.highlightNode1(node);
+            }
+        });
+    }
+
+    private void highlightNode2(final int node) {
+        activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                visualizer.highlightNode2(node);
             }
         });
     }
