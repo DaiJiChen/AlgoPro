@@ -8,6 +8,9 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 
+import androidx.core.content.ContextCompat;
+
+import com.SIT.jichen.myapplication.R;
 import com.SIT.jichen.myapplication.algorithm.tree.BinarySearchTree;
 import com.SIT.jichen.myapplication.util;
 
@@ -25,6 +28,8 @@ public class BSTVisualizer extends AlgoVisualizer {
 
     private Rect bounds;
     private int height = 0;
+
+    private int targetId = -1;
 
     private BinarySearchTree b;
     private int[] array = util.bst_array;
@@ -65,7 +70,7 @@ public class BSTVisualizer extends AlgoVisualizer {
         bounds = new Rect();
         textPaint.getTextBounds("0", 0, 1, bounds);
 
-        circlePaint.setColor(Color.RED);
+        circlePaint.setColor(ContextCompat.getColor(getContext(), R.color.green));
         circlePaint.setAntiAlias(true);
 
         linePaint = new Paint();
@@ -73,10 +78,10 @@ public class BSTVisualizer extends AlgoVisualizer {
         linePaint.setColor(Color.BLACK);
 
         circleHighlightPaint = new Paint(circlePaint);
-        circleHighlightPaint.setColor(Color.BLUE);
+        circleHighlightPaint.setColor(ContextCompat.getColor(getContext(), R.color.red));
 
         lineHighlightPaint = new Paint(linePaint);
-        lineHighlightPaint.setColor(Color.RED);
+        lineHighlightPaint.setColor(ContextCompat.getColor(getContext(), R.color.red));
         lineHighlightPaint.setStrokeWidth(10);
 
         for (int i : array) {
@@ -103,6 +108,10 @@ public class BSTVisualizer extends AlgoVisualizer {
     public void setData(BinarySearchTree b) {
         this.b = b;
         invalidate();
+    }
+
+    public void setSearchTarget(int id) {
+        this.targetId = id;
     }
 
     private void drawBst(Canvas canvas) {

@@ -28,12 +28,14 @@ public class util {
         return false;
     }
 
-    public static final int[] bst_array = {5, 8, 10, 3, 1, 6, 9, 7, 2, 0};
+    public static final int[] target_array = {4};
+
+    public static final int[] bst_array = {3, 2, 5, 1, 4, 6};
 
     public static final int[][] bst = {
-            {5, 8, 10, 3, 1, 6, 9, 7, 2, 0}, //nodes
-            {3, 6, 9, 1, 0, 7, -1, -1, -1, -1}, //left child of nodes
-            {8, 10, 9, -1, 2, 7, -1, -1, -1, -1} //right child of nodes
+            {3, 2, 5, 1, 4, 6}, //nodes
+            {2, 1, 4, -1, -1, -1}, //left child of nodes
+            {5, -1, 6, -1, -1, -1} //right child of nodes
     };
 
 

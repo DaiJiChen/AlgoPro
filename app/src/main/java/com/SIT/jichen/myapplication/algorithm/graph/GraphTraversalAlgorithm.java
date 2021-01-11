@@ -4,6 +4,7 @@ import android.app.Activity;
 
 import com.SIT.jichen.myapplication.algorithm.Algorithm;
 import com.SIT.jichen.myapplication.algorithm.DataHandler;
+import com.SIT.jichen.myapplication.algorithm.tree.BSTAlgorithm;
 import com.SIT.jichen.myapplication.constants.Constants;
 import com.SIT.jichen.myapplication.visualization.DirectedGraphVisualizer;
 
@@ -17,6 +18,12 @@ public class GraphTraversalAlgorithm extends Algorithm implements DataHandler {
     public static final String TRAVERSE_DFS = "traverse_dfs";
 
     private Digraph graph;
+
+    private static boolean useBFS = false;
+
+    public static void useBFS(boolean useBFS) {
+        GraphTraversalAlgorithm.useBFS = useBFS;
+    }
 
     private DirectedGraphVisualizer visualizer;
 
@@ -121,13 +128,10 @@ public class GraphTraversalAlgorithm extends Algorithm implements DataHandler {
     public void onMessageReceived(String message) {
         if (message.equals(Constants.COMMAND_START_ALGORITHM)) {
             startExecution();
-        }
-        else if (message.equals(TRAVERSE_BFS)) {
-            startExecution();
-            bfs(graph.getRoot());
-        } else if (message.endsWith(TRAVERSE_DFS)) {
-            startExecution();
-            dfs(graph.getRoot());
+            if(useBFS)
+                bfs(graph.getRoot());
+            else
+                dfs(graph.getRoot());
         }
     }
 

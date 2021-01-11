@@ -4,6 +4,7 @@ import android.app.Activity;
 
 import com.SIT.jichen.myapplication.algorithm.Algorithm;
 import com.SIT.jichen.myapplication.algorithm.DataHandler;
+import com.SIT.jichen.myapplication.constants.Constants;
 import com.SIT.jichen.myapplication.util;
 import com.SIT.jichen.myapplication.visualization.ArrayVisualizer;
 import com.SIT.jichen.myapplication.visualization.BSTVisualizer;
@@ -12,6 +13,12 @@ public class BSTAlgorithm extends Algorithm implements DataHandler {
 
     public static final String START_BST_SEARCH = "start_bst_search";
     public static final String START_BST_INSERT = "start_bst_insert";
+
+    public static void do_search(boolean doSearch) {
+        BSTAlgorithm.doSearch = doSearch;
+    }
+
+    private static boolean doSearch = false;
 
     private BSTVisualizer visualizer;
     private ArrayVisualizer arrayVisualizer;
@@ -28,15 +35,17 @@ public class BSTAlgorithm extends Algorithm implements DataHandler {
     }
 
     private void startBSTSearch() {
-        int id = util.getRandomKeyFromBST();
+        int targetId = 4;
+        visualizer.setSearchTarget(targetId);
         BinarySearchTree.Node current = b.getRoot();
         highlightNode(current.data);
         sleep();
         while (current != null) {
-            if (current.data == id) {
+            if (current.data == targetId) {
+                sleep();
                 completed();
                 break;
-            } else if (current.data > id) {
+            } else if (current.data > targetId) {
                 highlightLine(current.data, current.left.data);
                 current = current.left;
                 highlightNode(current.data);
@@ -55,13 +64,13 @@ public class BSTAlgorithm extends Algorithm implements DataHandler {
         int[] array = util.bst_array;
         BinarySearchTree tree = new BinarySearchTree();
         removeAllNodes();
-        sleepFor(800);
+        sleep();
 
         for (int i = 0; i < array.length; i++) {
             tree.insert(array[i]);
             addNode(array[i]);
             highlightNode(array[i]);
-            sleepFor(800);
+            sleep();
         }
 
         highlightNode(-1);
@@ -75,12 +84,13 @@ public class BSTAlgorithm extends Algorithm implements DataHandler {
 
     @Override
     public void onMessageReceived(String message) {
-        if (message.equals(START_BST_SEARCH)) {
+        if (message.equals(Constants.COMMAND_START_ALGORITHM)) {
             startExecution();
-            startBSTSearch();
-        } else if (message.equals(START_BST_INSERT)) {
-            startExecution();
-            startBSTInsert();
+            if (doSearch) {
+                startBSTSearch();
+            } else {
+                startBSTInsert();
+            }
         }
     }
 
@@ -90,7 +100,10 @@ public class BSTAlgorithm extends Algorithm implements DataHandler {
             public void run() {
                 visualizer.setData(b);
                 if (arrayVisualizer!=null) {
-                    arrayVisualizer.setData(util.bst_array);
+                    if(doSearch)
+                        arrayVisualizer.setData(util.target_array);
+                    else
+                        arrayVisualizer.setData(util.bst_array);
                 }
             }
         });

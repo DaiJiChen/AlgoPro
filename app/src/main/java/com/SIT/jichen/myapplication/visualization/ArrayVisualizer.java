@@ -8,7 +8,12 @@ import android.graphics.Path;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
+
+import androidx.core.content.ContextCompat;
+
+import com.SIT.jichen.myapplication.R;
 
 public class ArrayVisualizer extends View {
 
@@ -35,6 +40,8 @@ public class ArrayVisualizer extends View {
 
     private void initialise() {
 
+        setForegroundGravity(Gravity.CENTER);
+
         textPaint = new Paint();
         containerPaint = new Paint();
 
@@ -44,8 +51,8 @@ public class ArrayVisualizer extends View {
         textPaint.setTextAlign(Paint.Align.CENTER);
 
         highlightPaint = new Paint(textPaint);
-        highlightPaint.setColor(Color.BLUE);
-        highlightPaint.setTextSize(getDimensionInPixelFromSP(25));
+        highlightPaint.setColor(ContextCompat.getColor(getContext(), R.color.red));
+        highlightPaint.setTextSize(getDimensionInPixelFromSP(20));
 
         containerPaint.setStyle(Paint.Style.STROKE);
         containerPaint.setColor(Color.BLACK);
@@ -59,7 +66,10 @@ public class ArrayVisualizer extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        setMeasuredDimension(getMeasuredWidth(), getDimensionInPixel(80));
+        if(array.length == 1)
+            setMeasuredDimension(getMeasuredWidth(), getDimensionInPixel(80));
+        else
+            setMeasuredDimension(getMeasuredWidth(), getDimensionInPixel(80));
     }
 
     public int getDimensionInPixel(int dp) {
@@ -111,6 +121,12 @@ public class ArrayVisualizer extends View {
         int posX = getDimensionInPixel(40) + getDimensionInPixel(15);
         int textWidth = (getWidth() - getDimensionInPixel(80)) / array.length;
 
+        if(array.length == 1) {
+            String number = "Search Target: " + String.valueOf(array[0]);
+            canvas.drawText(number, getMeasuredWidth()/2, getDimensionInPixel(30), highlightPaint);
+            return;
+        }
+
         for (int i = 0; i < array.length; i++) {
             String number = String.valueOf(array[i]);
             if (highlightPosition != -1 && highlightPosition == array[i]) {
@@ -124,6 +140,10 @@ public class ArrayVisualizer extends View {
 
     public void setData(int[] array) {
         this.array = array;
+    }
+
+    public int[] getData() {
+        return array;
     }
 
     public void highlightValue(int num) {

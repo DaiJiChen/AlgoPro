@@ -72,6 +72,7 @@ public class AlgoFragment extends Fragment {
         assert algoName != null;
 
         final AlgoVisualizer visualizer;
+        ArrayVisualizer arrayVisualizer;
         
         floatingActionButton.setVisibility(View.VISIBLE);
 
@@ -117,21 +118,32 @@ public class AlgoFragment extends Fragment {
 
 
             case Constants.BST_SEARCH:
-                visualizer = new BSTVisualizer(getActivity());
+                visualizer = new BSTVisualizer(getActivity(), 280);
+                arrayVisualizer = new ArrayVisualizer(getActivity());
                 appBarLayout.addView(visualizer);
+                appBarLayout.addView(arrayVisualizer);
+                ((BSTAlgorithm) algorithm).do_search(true);
                 algorithm = new BSTAlgorithm((BSTVisualizer) visualizer, getActivity());
+                ((BSTAlgorithm) algorithm).setArrayVisualizer(arrayVisualizer);
                 ((BSTAlgorithm) algorithm).setData(util.createBinaryTree());
                 break;
             case Constants.BST_INSERT:
                 visualizer = new BSTVisualizer(getActivity(), 280);
-                ArrayVisualizer arrayVisualizer = new ArrayVisualizer(getActivity());
+                arrayVisualizer = new ArrayVisualizer(getActivity());
                 appBarLayout.addView(visualizer);
                 appBarLayout.addView(arrayVisualizer);
+                ((BSTAlgorithm) algorithm).do_search(false);
                 algorithm = new BSTAlgorithm((BSTVisualizer) visualizer, getActivity());
                 ((BSTAlgorithm) algorithm).setArrayVisualizer(arrayVisualizer);
                 ((BSTAlgorithm) algorithm).setData(util.createBinaryTree());
                 break;
             case Constants.BFS:
+                visualizer = new DirectedGraphVisualizer(getActivity());
+                appBarLayout.addView(visualizer);
+                algorithm = new GraphTraversalAlgorithm((DirectedGraphVisualizer) visualizer, getActivity());
+                ((GraphTraversalAlgorithm) algorithm).useBFS(true);
+                ((GraphTraversalAlgorithm) algorithm).setData(util.createDirectedGraph());
+                break;
             case Constants.DFS:
                 visualizer = new DirectedGraphVisualizer(getActivity());
                 appBarLayout.addView(visualizer);
@@ -199,8 +211,7 @@ public class AlgoFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (!algorithm.isStarted()) {
-//                    algorithm.sendMessage(startCommand);
-                    algorithm.sendMessage("start_bst_search");
+                    algorithm.sendMessage(startCommand);
                     floatingActionButton.setImageResource(R.drawable.ic_pause);
                 } else {
                     if (algorithm.isPaused()) {
