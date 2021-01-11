@@ -178,21 +178,6 @@
             android:textSize="15dp"
             android:onClick="DonateOnClick"/>
 
-        <View style="@style/VerticalLine"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"/>
-
-        <TextView
-            android:id="@+id/shareText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Share"
-            android:textColor="@color/text_grid"
-            android:textSize="15dp"
-            android:onClick="ShareOnClick"/>
-
-
-
     </LinearLayout>
 
 
