@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">AlgoPro</string>
+    <string name="app_name">Algorithms: Visualize, Explain and CodeDemo</string>
     <string name="Search">Search</string>
     <string name="Sorting">Sorting</string>
     <string name="Tree">Tree</string>
     <string name="List">List</string>
     <string name="HashMap">HashMap</string>
     <string name="Graph">Graph</string>bubble_sort
-    <string name="algo_name">algo_name</string>
+    <string name="algo_name">Algorithms: Visualize, Explain and CodeDemo</string>
     <string name="Report_bugs">Report any bugs <u> here </u></string>
 </resources>
