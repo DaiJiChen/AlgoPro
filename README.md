@@ -1,6 +1,7 @@
 # AlgoPro: Algorithm Visualization, Explanation and Code Demo.
-An native android app that visualize algorithms.
+An native android app for Algorithm Visualization.
 
+<a href="https://play.google.com/store/apps/details?id=com.SIT.jichen.myapplication"><img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" height=50px/></a>
 * Bubble Sort
 * Selection Sort
 * Insertion Sort
